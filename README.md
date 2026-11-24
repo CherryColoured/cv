@@ -1,27 +1,30 @@
-# Diego Jacobs — Portfolio profesional
+# Diego Jacobs — Professional Portfolio
 
-Sitio estático en un único archivo HTML, sin frameworks, dependencias externas ni backend.
+Bilingual professional portfolio (Spanish / English), designed for recruiter review. The site is static and self-contained: no frameworks, external JavaScript libraries, backend or third-party requests are required.
 
-## Cómo abrirlo
+## Package contents
 
-1. Descomprimir el paquete.
-2. Abrir `index.html` con Chrome, Firefox, Safari o Edge.
-3. Para publicarlo, copiar el contenido del directorio a un hosting estático (GitHub Pages, servidor web propio, etc.).
+- `index.html` — portfolio website.
+- `assets/diego-jacobs.jpg` — profile photograph supplied for this portfolio.
+- `downloads/Diego_Jacobs_CV_Ejecutivo_ES.pdf` — Spanish executive CV (2 pages).
+- `downloads/Diego_Jacobs_Executive_CV_EN.pdf` — English executive CV (2 pages).
 
-## Interacciones incluidas
+## Open locally
 
-- Selector de enfoque **Leadership** / **SOC & Technical**.
-- Diagrama lógico interactivo del homelab: seleccionar cada nodo para ver su función y tecnologías.
-- Animaciones de entrada al desplazarse, métricas animadas, navegación activa y barra de progreso.
-- Menú móvil y estilos de impresión para guardar como PDF.
-- Respeto por `prefers-reduced-motion`.
+1. Extract the ZIP file.
+2. Keep the `assets` and `downloads` folders beside `index.html`.
+3. Open `index.html` in Chrome, Firefox, Safari or Edge.
+4. Use the ES / EN selector. The CV download button follows the selected language.
 
-## Personalización
+## Personalization
 
-- **Fotografía:** reemplazar el bloque `portrait-slot` de `index.html` por una etiqueta `<img>` con la imagen elegida; el CSS del bloque se puede reutilizar.
-- **Contacto:** verificar email y teléfono antes de publicar en un sitio público.
-- **Contenido:** todo el texto está escrito directamente en `index.html` para facilitar la edición.
+- Replace `assets/diego-jacobs.jpg` to change the photograph, keeping the same filename or updating the image path in `index.html`.
+- Replace either PDF inside `downloads/` to update the downloadable CV. Keep the filenames unchanged so the site buttons continue to work.
+- Edit the bilingual text directly in `index.html`. Content is paired through `.lang-es` and `.lang-en` spans.
 
-## Privacidad
+## Technical notes
 
-El diagrama del laboratorio es conceptual. No publica direcciones IP, nombres internos de hosts, credenciales, rutas de administración ni detalles de configuración sensibles.
+- Static HTML, CSS and vanilla JavaScript.
+- Relative asset links; works from a local folder and under a GitHub Pages project URL.
+- Responsive layout, keyboard-accessible lab-layer controls and reduced-motion support.
+- No external fonts, analytics, trackers or CDN dependencies.
