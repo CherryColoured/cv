@@ -1,662 +1,205 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090d0b">
-  <meta name="description" content="Diego Jacobs — liderazgo en ciberseguridad, GRC, SOC y experiencia técnica hands-on en infraestructura, automatización e IA local.">
-  <meta name="author" content="Diego Jacobs">
-  <title>Diego Jacobs — Security Leadership / Technical Operations</title>
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #090d0b;
-      --bg-soft: #0d1310;
-      --panel: #111a15;
-      --panel-2: #16211a;
-      --line: rgba(198, 226, 204, .13);
-      --line-strong: rgba(198, 226, 204, .25);
-      --text: #edf3e9;
-      --muted: #9ca99e;
-      --muted-2: #718076;
-      --lime: #c6f36d;
-      --lime-dim: rgba(198, 243, 109, .12);
-      --orange: #ff9b69;
-      --blue: #83b6d7;
-      --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
-      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --max: 1190px;
-      --nav-height: 72px;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-height) + 18px); }
-    body {
-      margin: 0; min-width: 320px; background: var(--bg); color: var(--text);
-      font: 15px/1.65 var(--sans); overflow-x: hidden;
-      background-image: radial-gradient(ellipse at 15% -10%, rgba(91, 127, 83, .18), transparent 40%),
-                        radial-gradient(ellipse at 100% 42%, rgba(70, 104, 83, .11), transparent 36%);
-    }
-    body::before {
-      content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none; opacity: .14;
-      background-image: linear-gradient(rgba(190,220,192,.045) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(190,220,192,.045) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: linear-gradient(to bottom, black, transparent 85%);
-    }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-    button:focus-visible, a:focus-visible { outline: 2px solid var(--lime); outline-offset: 4px; }
-    ::selection { background: var(--lime); color: #10150e; }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#172d3e">
+<meta name="description" content="Diego Jacobs — trayectoria profesional en ciberseguridad, GRC, SOC, infraestructura y operaciones técnicas.">
+<meta name="author" content="Diego Jacobs">
+<title>Diego Jacobs | Ciberseguridad, GRC, SOC e IT</title>
+<style>
+:root{--ink:#1b2b38;--navy:#172d3e;--navy-2:#24475d;--teal:#277d78;--teal-soft:#e8f2f0;--paper:#f4f6f7;--white:#fff;--line:#dce3e7;--muted:#61717c;--soft:#edf1f3;--accent:#b36b3e;--max:1120px;--nav-h:68px;--sans:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 18px)}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.65 var(--sans)}a{color:inherit;text-decoration:none}button{font:inherit}button:focus-visible,a:focus-visible{outline:3px solid #80aaa5;outline-offset:3px}::selection{background:#cbe0dc;color:var(--navy)}
+.progress{position:fixed;z-index:100;inset:0 0 auto;height:3px;background:transparent}.progress span{display:block;height:100%;width:0;background:var(--teal)}
+.site-nav{height:var(--nav-h);position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}.nav-inner{width:min(var(--max),calc(100% - 48px));height:100%;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:20px}.identity{display:flex;align-items:center;gap:10px;min-width:max-content}.identity-mark{width:36px;height:36px;display:grid;place-items:center;border-radius:7px;background:var(--navy);color:white;font-weight:750;font-size:12px;letter-spacing:.05em}.identity-name{font-size:12px;font-weight:780;letter-spacing:.07em;color:var(--navy)}.identity-role{display:block;color:var(--muted);font-size:9px;letter-spacing:.12em;text-transform:uppercase;margin-top:1px}.nav-links{display:flex;align-items:center;gap:clamp(12px,1.8vw,22px);color:#53636f;font-size:11px;font-weight:600}.nav-links a:hover,.nav-links a.active{color:var(--teal)}.nav-tools{display:flex;align-items:center;gap:8px}.lang-switch{display:flex;border:1px solid var(--line);border-radius:6px;padding:2px;background:#f8fafb}.lang-switch button{border:0;background:transparent;color:var(--muted);padding:6px 8px;border-radius:4px;font-size:10px;font-weight:700;cursor:pointer}.lang-switch button[aria-pressed=true]{background:var(--navy);color:white}.download-nav{display:inline-flex;align-items:center;gap:7px;background:var(--teal);color:white;padding:9px 11px;border-radius:5px;font-size:10px;font-weight:700;white-space:nowrap}.download-nav:hover{background:#1f6662}.menu-toggle{display:none;border:1px solid var(--line);background:white;color:var(--navy);border-radius:5px;padding:7px 9px}
+.wrap{width:min(var(--max),calc(100% - 48px));margin:auto}.hero{display:grid;grid-template-columns:minmax(0,1fr) 255px;gap:60px;align-items:center;padding:78px 0 62px;min-height:500px}.eyebrow,.section-kicker{color:var(--teal);font:700 10px/1.4 var(--mono);letter-spacing:.13em;text-transform:uppercase}.hero h1{font-size:clamp(36px,5.2vw,58px);line-height:1.04;letter-spacing:-.055em;color:var(--navy);font-weight:680;margin:13px 0 15px;max-width:730px}.hero h1 span{color:var(--teal)}.role-line{font-size:clamp(16px,2vw,20px);line-height:1.4;color:#435866;max-width:720px;font-weight:520}.summary{max-width:745px;margin:20px 0 0;color:#52616c;font-size:14px;line-height:1.8}.hero-contacts{display:flex;flex-wrap:wrap;gap:10px 19px;margin-top:24px;color:#4c5d68;font-size:11px}.hero-contacts a{border-bottom:1px solid #c7d2d7;padding-bottom:2px}.hero-contacts a:hover{color:var(--teal);border-color:var(--teal)}.hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:27px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 13px;border-radius:5px;border:1px solid #c7d3d9;color:var(--navy);background:white;font-size:11px;font-weight:700;transition:background .2s,border-color .2s,transform .2s;cursor:pointer}.btn:hover{border-color:var(--teal);background:#f6fbfa;transform:translateY(-1px)}.btn.primary{background:var(--navy);border-color:var(--navy);color:white}.btn.primary:hover{background:#24475d}.portrait{position:relative;width:100%;max-width:255px;justify-self:end}.portrait img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center 29%;border-radius:8px;box-shadow:0 14px 35px rgba(28,49,63,.15)}.portrait:after{content:"";position:absolute;left:-12px;bottom:-12px;width:62%;height:68%;border:2px solid #b8d1ce;border-radius:8px;z-index:-1}.portrait-caption{margin-top:14px;color:var(--muted);font:9px var(--mono);letter-spacing:.1em;text-transform:uppercase;text-align:right}
+.quick-facts{display:grid;grid-template-columns:repeat(4,1fr);border-block:1px solid var(--line);background:white}.fact{padding:19px 22px;min-height:92px;border-right:1px solid var(--line)}.fact:last-child{border:0}.fact strong{display:block;color:var(--navy);font-size:27px;line-height:1.1;letter-spacing:-.04em}.fact span{display:block;color:var(--muted);font-size:10px;line-height:1.4;margin-top:7px}
+section.content-section{padding:78px 0;border-bottom:1px solid var(--line)}.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:35px;margin-bottom:30px}.section-head-main{max-width:780px}.section-head h2{font-size:clamp(27px,3.5vw,39px);line-height:1.12;letter-spacing:-.04em;color:var(--navy);margin:8px 0 0;font-weight:650}.section-intro{color:var(--muted);font-size:13px;line-height:1.75;max-width:760px;margin:12px 0 0}.section-note{max-width:190px;text-align:right;color:#89969e;font:9px/1.7 var(--mono);letter-spacing:.05em}
+.career-list{position:relative;display:grid;gap:13px}.career-list:before{content:"";position:absolute;left:119px;top:17px;bottom:17px;width:1px;background:#cbd9dc}.career-item{display:grid;grid-template-columns:100px 1fr;gap:38px;position:relative}.career-date{padding-top:4px;text-align:right;color:var(--teal);font:700 10px/1.55 var(--mono)}.career-card{background:white;border:1px solid var(--line);border-radius:7px;padding:18px 20px;position:relative}.career-card:before{content:"";position:absolute;left:-26px;top:22px;width:9px;height:9px;border:2px solid var(--teal);background:var(--paper);border-radius:50%;z-index:2}.career-top{display:flex;justify-content:space-between;align-items:flex-start;gap:15px}.career-card h3{font-size:15px;line-height:1.35;color:var(--navy);margin:0;font-weight:680}.company{font-size:11px;color:#50616c;margin-top:4px;font-weight:650}.industry{font-size:9px;color:#83919a;text-align:right;white-space:nowrap}.scope{display:inline-block;margin-top:7px;padding:2px 7px;border-radius:3px;background:#f0f4f5;color:#64747e;font-size:9px}.career-card ul{padding-left:17px;margin:10px 0 0;color:#52616b;font-size:11px;line-height:1.65}.career-card li{padding-left:2px;margin:3px 0}.career-card li::marker{color:var(--teal)}
+.achievement-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:24px}.achievement{padding:15px 16px;background:#eaf0f2;border-radius:6px;border-left:3px solid var(--teal)}.achievement strong{display:block;color:var(--navy);font-size:17px;line-height:1.2}.achievement span{display:block;color:#64737d;font-size:10px;line-height:1.45;margin-top:6px}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.skill-card{background:white;border:1px solid var(--line);border-radius:7px;padding:19px 20px}.skill-card h3{font-size:13px;color:var(--navy);margin:0 0 8px}.skill-card p{margin:0;color:#5b6972;font-size:11px;line-height:1.75}.skill-card .platforms{display:block;margin-top:12px;padding-top:9px;border-top:1px solid #edf0f2;color:var(--teal);font:9px/1.6 var(--mono)}
+.lab-section{background:#edf2f3}.lab-wrap{padding:62px 0}.lab-header{max-width:760px;margin-bottom:23px}.lab-header h2{font-size:clamp(25px,3.2vw,35px);color:var(--navy);letter-spacing:-.035em;margin:8px 0 9px}.lab-header p{color:#5e6d76;font-size:12px;line-height:1.75;margin:0;max-width:760px}.lab-figure{background:white;border:1px solid #d5e0e3;border-radius:8px;padding:21px 22px 18px}.figure-title{display:flex;justify-content:space-between;gap:15px;align-items:center;color:#74838c;font:9px var(--mono);letter-spacing:.09em;text-transform:uppercase;margin-bottom:16px}.figure-title span:last-child{color:var(--teal)}.lab-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;align-items:stretch;position:relative}.lab-flow:before{content:"";position:absolute;left:9%;right:9%;top:22px;height:2px;background:#c5d9d8;z-index:0}.flow-node{position:relative;z-index:1;text-align:center;padding:0 7px}.flow-icon{width:44px;height:44px;margin:0 auto 10px;border-radius:50%;display:grid;place-items:center;background:#e5f0ee;border:1px solid #bcd3d0;color:var(--teal);font:700 11px var(--mono);box-shadow:0 0 0 5px white}.flow-node h3{font-size:11px;color:var(--navy);margin:0 0 5px}.flow-node p{font-size:9px;line-height:1.55;color:#6b7880;margin:0}.flow-node .flow-tech{display:block;color:var(--teal);font:8px/1.5 var(--mono);margin-top:6px}.lab-lower{display:grid;grid-template-columns:1fr .92fr;gap:13px;margin-top:13px}.lab-explainer,.lab-examples{border:1px solid #dbe3e6;border-radius:7px;padding:17px 18px;background:#f9fbfb}.lab-explainer h3,.lab-examples h3{font-size:12px;color:var(--navy);margin:0 0 10px}.layer-tabs{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:11px}.layer-tabs button{border:1px solid #d3dfe1;background:white;color:#66757d;border-radius:4px;padding:6px 8px;font:9px var(--mono);cursor:pointer}.layer-tabs button[aria-pressed=true]{background:var(--teal-soft);border-color:#8eb9b3;color:#216d68}.layer-detail{min-height:62px;color:#5a6870;font-size:10px;line-height:1.65}.layer-detail strong{color:var(--navy)}.lab-examples ul{margin:0;padding-left:16px;color:#5d6b73;font-size:10px;line-height:1.7}.lab-examples li{margin:4px 0}.lab-disclaimer{font:8px/1.5 var(--mono);color:#8a979e;margin-top:13px}
 
-    .progress-track { position: fixed; z-index: 100; inset: 0 0 auto; height: 2px; background: transparent; }
-    .progress-bar { height: 100%; width: 0; background: var(--lime); box-shadow: 0 0 14px rgba(198,243,109,.7); }
-    .nav {
-      position: sticky; z-index: 50; top: 0; height: var(--nav-height); display: flex; align-items: center;
-      border-bottom: 1px solid var(--line); background: rgba(9,13,11,.84); backdrop-filter: blur(18px);
-    }
-    .nav-inner { width: min(var(--max), calc(100% - 52px)); margin: auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .brand { display: inline-flex; align-items: center; gap: 12px; min-width: max-content; }
-    .brand-mark { width: 34px; height: 34px; border: 1px solid rgba(198,243,109,.55); border-radius: 9px; display: grid; place-items: center; color: var(--lime); font: 700 12px var(--mono); box-shadow: inset 0 0 16px rgba(198,243,109,.07); }
-    .brand-copy { display: flex; flex-direction: column; line-height: 1.2; }
-    .brand-copy strong { font-size: 12px; letter-spacing: .12em; }
-    .brand-copy span { color: var(--muted-2); font: 9px var(--mono); letter-spacing: .14em; margin-top: 4px; }
-    .nav-links { display: flex; align-items: center; gap: clamp(14px, 2vw, 26px); color: var(--muted); font: 11px var(--mono); }
-    .nav-links a { transition: color .2s ease; white-space: nowrap; }
-    .nav-links a:hover, .nav-links a.active { color: var(--lime); }
-    .nav-actions { display: flex; align-items: center; gap: 10px; }
-    .availability { display: inline-flex; align-items: center; gap: 8px; color: var(--muted); font: 10px var(--mono); white-space: nowrap; }
-    .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 12px var(--lime); animation: pulse 2.3s infinite; }
-    .menu-toggle { display: none; border: 1px solid var(--line-strong); color: var(--text); background: transparent; border-radius: 8px; width: 39px; height: 37px; cursor: pointer; }
+.lab-method{margin-top:12px;padding:16px 18px 17px;background:#f8faf9;border:1px solid #dbe4e2;border-radius:7px}.lab-method h3{margin:0 0 13px;color:var(--navy);font-size:11px}.method-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;position:relative}.method-steps:before{content:"";height:2px;position:absolute;left:7%;right:7%;top:13px;background:linear-gradient(90deg,#b8d3ce,#73aaa3,#b8d3ce);background-size:200% 100%;animation:method-flow 7s linear infinite}.method-step{position:relative;z-index:1;text-align:center}.method-step b{display:grid;place-items:center;width:27px;height:27px;margin:0 auto 7px;background:#e6f0ee;border:1px solid #b7d0cc;border-radius:50%;color:var(--teal);font:700 9px var(--mono);box-shadow:0 0 0 4px #f8faf9}.method-step strong{display:block;color:var(--navy);font-size:9px}.method-step small{display:block;color:#76838a;font-size:8px;line-height:1.45;margin-top:3px}@keyframes method-flow{to{background-position:200% 0}}
+@media(max-width:760px){.method-steps{grid-template-columns:repeat(2,1fr);gap:14px}.method-steps:before{display:none}.method-step{display:grid;grid-template-columns:27px 1fr;column-gap:8px;text-align:left;align-items:center}.method-step b{grid-row:span 2;margin:0}.method-step strong,.method-step small{margin:0}}
 
-    .wrap { width: min(var(--max), calc(100% - 52px)); margin: auto; }
-    .hero { min-height: 730px; padding: 88px 0 84px; display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(360px, .88fr); align-items: center; gap: clamp(36px, 6vw, 86px); position: relative; }
-    .hero::after { content: "01 / PROFILE"; position: absolute; right: 0; top: 38px; color: var(--muted-2); font: 10px var(--mono); letter-spacing: .18em; }
-    .eyebrow, .section-code, .micro-label { color: var(--lime); font: 10px var(--mono); letter-spacing: .19em; text-transform: uppercase; }
-    .hero-kicker { display: flex; align-items: center; gap: 11px; margin-bottom: 22px; }
-    .hero-kicker .rule { width: 35px; height: 1px; background: var(--lime); }
-    h1 { font-size: clamp(43px, 6.3vw, 78px); line-height: .99; letter-spacing: -.065em; font-weight: 650; margin: 0; max-width: 740px; }
-    h1 .accent { color: var(--lime); }
-    .hero-subtitle { margin: 26px 0 0; color: #c7d1c6; font-size: clamp(17px, 1.8vw, 21px); line-height: 1.45; max-width: 650px; }
-    .hero-copy { max-width: 670px; color: var(--muted); margin: 19px 0 0; font-size: 14px; }
-    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 25px; }
-    .tag { border: 1px solid var(--line-strong); border-radius: 5px; padding: 5px 9px; color: #bdc9bb; font: 10px var(--mono); letter-spacing: .02em; background: rgba(255,255,255,.015); }
-    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 11px; margin-top: 31px; }
-    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; padding: 11px 15px; border-radius: 6px; border: 1px solid var(--line-strong); color: var(--text); font: 11px var(--mono); letter-spacing: .02em; transition: .22s ease; cursor: pointer; background: transparent; }
-    .btn:hover { border-color: var(--lime); color: var(--lime); transform: translateY(-2px); }
-    .btn.primary { border-color: var(--lime); background: var(--lime); color: #11170e; font-weight: 700; }
-    .btn.primary:hover { background: #d4ff80; color: #11170e; box-shadow: 0 8px 30px rgba(198,243,109,.14); }
-    .btn svg { width: 14px; height: 14px; }
-
-    .terminal-wrap { position: relative; }
-    .terminal-glow { position: absolute; inset: 12% 6%; background: rgba(147,190,92,.10); filter: blur(55px); pointer-events: none; }
-    .terminal {
-      position: relative; border: 1px solid rgba(198,243,109,.25); border-radius: 13px; overflow: hidden;
-      background: linear-gradient(150deg, rgba(21,32,24,.97), rgba(11,17,13,.96)); box-shadow: 0 24px 80px rgba(0,0,0,.28);
-      transform: perspective(1000px) rotateY(-2deg) rotateX(1deg); animation: terminal-float 8s ease-in-out infinite;
-    }
-    .terminal-head { height: 43px; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; padding: 0 15px; background: rgba(255,255,255,.018); }
-    .terminal-id { display: flex; align-items: center; gap: 7px; color: var(--muted); font: 9px var(--mono); letter-spacing: .08em; }
-    .terminal-id .mini-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
-    .terminal-meta { color: var(--muted-2); font: 9px var(--mono); }
-    .terminal-body { padding: 20px 21px 14px; font: 11px/1.9 var(--mono); }
-    .term-line { display: flex; gap: 9px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .prompt { color: var(--lime); }
-    .term-muted { color: var(--muted-2); }
-    .term-key { color: var(--blue); }
-    .term-value { color: #dae6d5; }
-    .term-ok { color: var(--lime); }
-    .term-warn { color: var(--orange); }
-    .term-gap { height: 11px; }
-    .terminal-foot { display: flex; justify-content: space-between; gap: 8px; padding: 11px 18px; border-top: 1px solid var(--line); color: var(--muted-2); font: 9px var(--mono); }
-    .cursor { display: inline-block; width: 6px; height: 12px; vertical-align: -2px; margin-left: 2px; background: var(--lime); animation: blink 1.1s steps(2,end) infinite; }
-    .portrait-slot { margin: 0 18px 17px; display: flex; align-items: center; gap: 14px; border: 1px dashed rgba(198,243,109,.25); border-radius: 8px; padding: 11px; background: rgba(255,255,255,.015); }
-    .portrait-icon { width: 46px; height: 46px; flex: 0 0 46px; border-radius: 7px; display: grid; place-items: center; background: #202b21; color: var(--lime); font: 12px var(--mono); }
-    .portrait-slot strong { display: block; font: 10px var(--mono); color: #d6e2d2; letter-spacing: .05em; }
-    .portrait-slot small { color: var(--muted-2); display: block; font-size: 10px; margin-top: 3px; }
-
-    .quick-facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; border-block: 1px solid var(--line); background: var(--line); }
-    .fact { background: var(--bg); padding: 23px 23px 24px; min-height: 106px; }
-    .fact strong { display: block; font-size: clamp(26px, 3vw, 35px); letter-spacing: -.06em; line-height: 1.1; color: var(--lime); font-weight: 620; }
-    .fact span { color: var(--muted); display: block; margin-top: 8px; font: 10px/1.45 var(--mono); }
-
-    section.content-section { padding: 110px 0; border-bottom: 1px solid var(--line); position: relative; }
-    .section-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin-bottom: 42px; }
-    .section-title-wrap { max-width: 720px; }
-    .section-code { display: block; margin-bottom: 13px; }
-    h2 { margin: 0; font-size: clamp(31px, 4vw, 48px); line-height: 1.07; letter-spacing: -.05em; font-weight: 620; }
-    .section-intro { max-width: 730px; color: var(--muted); margin: 16px 0 0; font-size: 14px; }
-    .side-note { color: var(--muted-2); font: 10px/1.7 var(--mono); max-width: 195px; text-align: right; }
-
-    .mode-switch { background: rgba(255,255,255,.025); border: 1px solid var(--line); border-radius: 7px; padding: 4px; display: inline-flex; gap: 4px; margin: 0 0 21px; }
-    .mode-switch button { border: 0; border-radius: 4px; padding: 8px 12px; background: transparent; color: var(--muted); cursor: pointer; font: 10px var(--mono); transition: .2s ease; }
-    .mode-switch button[aria-pressed="true"] { background: var(--lime-dim); color: var(--lime); box-shadow: inset 0 0 0 1px rgba(198,243,109,.22); }
-    .mode-note { min-height: 28px; color: var(--muted-2); font: 10px/1.6 var(--mono); margin: 0 0 26px; }
-    .timeline { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
-    .job { min-height: 215px; padding: 22px 23px; background: linear-gradient(145deg, rgba(21,31,24,.85), rgba(13,19,15,.85)); border: 1px solid var(--line); border-radius: 9px; position: relative; overflow: hidden; transition: border-color .25s ease, transform .25s ease, opacity .25s ease; }
-    .job:hover { border-color: rgba(198,243,109,.4); transform: translateY(-3px); }
-    .job::after { content: ""; position: absolute; width: 110px; height: 110px; right: -58px; bottom: -67px; border: 1px solid rgba(198,243,109,.09); border-radius: 50%; box-shadow: 0 0 0 15px rgba(198,243,109,.025), 0 0 0 30px rgba(198,243,109,.018); }
-    .job-head { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-bottom: 14px; }
-    .period { color: var(--lime); font: 10px var(--mono); }
-    .industry { color: var(--muted-2); font: 9px var(--mono); text-align: right; }
-    .job h3 { margin: 0; font-size: 17px; line-height: 1.35; font-weight: 610; letter-spacing: -.02em; max-width: 490px; }
-    .company { color: #c1cdbf; font-size: 12px; margin-top: 4px; }
-    .scope { display: inline-block; margin-top: 11px; padding: 3px 7px; border: 1px solid var(--line); color: var(--muted); font: 9px var(--mono); border-radius: 3px; }
-    .job ul { padding-left: 17px; margin: 12px 0 0; color: var(--muted); font-size: 11px; line-height: 1.65; }
-    .job li { margin: 4px 0; }
-    .job .role-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
-    .role-tags span { font: 8px var(--mono); color: var(--muted-2); background: rgba(255,255,255,.025); border: 1px solid var(--line); border-radius: 3px; padding: 3px 6px; }
-    .job[data-track="leadership"] { border-left: 2px solid rgba(198,243,109,.48); }
-    .job[data-track="technical"] { border-left: 2px solid rgba(131,182,215,.5); }
-
-    .impact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 19px; }
-    .impact { border: 1px solid var(--line); border-radius: 8px; padding: 23px; background: rgba(255,255,255,.018); }
-    .impact .impact-number { color: var(--orange); font-size: 29px; line-height: 1.05; letter-spacing: -.055em; font-weight: 650; }
-    .impact h3 { font-size: 13px; margin: 13px 0 6px; }
-    .impact p { color: var(--muted); font-size: 11px; margin: 0; }
-
-    .capability-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-    .capability { padding: 22px; border: 1px solid var(--line); border-radius: 8px; background: linear-gradient(150deg, rgba(20,30,23,.8), rgba(12,18,14,.8)); }
-    .cap-icon { width: 34px; height: 34px; border: 1px solid var(--line-strong); border-radius: 7px; display: grid; place-items: center; color: var(--lime); margin-bottom: 18px; }
-    .cap-icon svg { width: 17px; height: 17px; }
-    .capability h3 { margin: 0 0 9px; font-size: 15px; }
-    .capability p { color: var(--muted); font-size: 11px; margin: 0; }
-    .capability .cap-label { display: block; color: var(--muted-2); font: 9px var(--mono); margin-top: 17px; letter-spacing: .08em; }
-
-    .lab-intro-row { display: grid; grid-template-columns: .8fr 1.2fr; gap: 35px; align-items: end; margin-bottom: 28px; }
-    .lab-stamp { border: 1px solid rgba(198,243,109,.26); border-radius: 7px; color: var(--lime); padding: 13px 14px; font: 9px/1.7 var(--mono); text-transform: uppercase; letter-spacing: .1em; max-width: 255px; }
-    .lab-stamp strong { display: block; color: var(--text); font-size: 11px; }
-    .lab-console { display: grid; grid-template-columns: 1.2fr .8fr; border: 1px solid var(--line-strong); border-radius: 11px; overflow: hidden; background: rgba(13,20,15,.88); }
-    .network-panel { padding: 20px; border-right: 1px solid var(--line); min-width: 0; }
-    .panel-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: var(--muted-2); font: 9px var(--mono); margin-bottom: 14px; letter-spacing: .08em; }
-    .panel-head .diagram-badge { color: var(--lime); border: 1px solid rgba(198,243,109,.25); border-radius: 3px; padding: 3px 6px; }
-    .network-diagram { width: 100%; height: auto; min-height: 315px; display: block; background: radial-gradient(ellipse at center, rgba(105,143,93,.09), transparent 64%); }
-    .network-diagram .wire { fill: none; stroke: rgba(166,195,160,.35); stroke-width: 1.2; stroke-dasharray: 4 6; animation: wire-flow 18s linear infinite; }
-    .network-diagram .wire.hot { stroke: rgba(198,243,109,.55); stroke-width: 1.5; }
-    .network-diagram .nodebox { fill: #131e16; stroke: rgba(194,218,192,.3); stroke-width: 1; transition: .2s ease; }
-    .network-diagram .nodebox.active { fill: #202e1c; stroke: var(--lime); stroke-width: 1.5; }
-    .network-diagram .node-dot { fill: var(--lime); }
-    .network-diagram text { fill: #d9e5d5; font-family: var(--mono); font-size: 10px; pointer-events: none; }
-    .network-diagram .subtext { fill: #89988a; font-size: 8px; }
-    .network-diagram .svg-node { cursor: pointer; outline: none; }
-    .network-diagram .svg-node:focus .nodebox { stroke: var(--orange); stroke-width: 2; }
-    .node-detail { padding: 23px; display: flex; flex-direction: column; justify-content: space-between; min-height: 365px; }
-    .node-detail .node-index { color: var(--muted-2); font: 9px var(--mono); letter-spacing: .1em; }
-    .node-detail h3 { margin: 19px 0 7px; color: var(--lime); font-size: 21px; letter-spacing: -.03em; }
-    .node-detail .node-stack { color: var(--blue); font: 10px/1.7 var(--mono); }
-    .node-detail p { color: var(--muted); font-size: 12px; margin: 16px 0 0; }
-    .node-selectors { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 25px; }
-    .node-selectors button { background: transparent; color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 6px 8px; cursor: pointer; font: 9px var(--mono); transition: .2s; }
-    .node-selectors button[aria-pressed="true"] { color: var(--lime); border-color: rgba(198,243,109,.5); background: var(--lime-dim); }
-    .lab-cases { display: grid; grid-template-columns: repeat(4, 1fr); gap: 11px; margin-top: 13px; }
-    .lab-case { padding: 18px; background: rgba(255,255,255,.018); border: 1px solid var(--line); border-radius: 7px; }
-    .lab-case .case-no { color: var(--orange); font: 10px var(--mono); }
-    .lab-case h3 { font-size: 13px; margin: 11px 0 6px; }
-    .lab-case p { color: var(--muted); font-size: 10px; margin: 0; }
-    .lab-footnote { color: var(--muted-2); font: 9px/1.6 var(--mono); margin-top: 16px; }
-
-    .learning-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 13px; }
-    .learning-card { padding: 24px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.018); }
-    .learning-card h3 { margin: 0 0 16px; font-size: 14px; }
-    .learning-card ul { list-style: none; margin: 0; padding: 0; }
-    .learning-card li { padding: 8px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
-    .learning-card li strong { color: #d6e1d3; font-weight: 550; }
-    .language-row { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 18px; }
-    .language-row span { padding: 5px 8px; border: 1px solid var(--line); color: var(--muted); border-radius: 4px; font: 9px var(--mono); }
-
-    .contact-section { padding: 95px 0 65px; }
-    .contact-panel { padding: clamp(25px, 5vw, 55px); border: 1px solid rgba(198,243,109,.3); border-radius: 12px; background: radial-gradient(ellipse at 85% 10%, rgba(128,167,85,.12), transparent 40%), linear-gradient(140deg, #142018, #0d140f); position: relative; overflow: hidden; }
-    .contact-panel::after { content: "DJ"; position: absolute; right: 18px; bottom: -72px; font-size: 240px; line-height: 1; font-weight: 800; letter-spacing: -.12em; color: rgba(198,243,109,.035); pointer-events: none; }
-    .contact-panel h2 { max-width: 730px; font-size: clamp(34px, 5vw, 58px); }
-    .contact-panel p { max-width: 590px; color: var(--muted); font-size: 13px; }
-    .contact-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 27px; position: relative; z-index: 1; }
-    .contact-item { display: inline-flex; align-items: center; gap: 9px; border: 1px solid var(--line-strong); border-radius: 6px; padding: 10px 12px; font: 10px var(--mono); color: #d7e2d4; transition: .2s; }
-    .contact-item:hover { border-color: var(--lime); color: var(--lime); }
-    .contact-item svg { width: 14px; height: 14px; color: var(--lime); }
-    footer { padding: 27px 0 35px; display: flex; justify-content: space-between; align-items: center; gap: 16px; color: var(--muted-2); font: 9px var(--mono); letter-spacing: .05em; }
-    footer .back-top { color: var(--muted); }
-
-    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .72s ease, transform .72s cubic-bezier(.2,.75,.2,1); }
-    .reveal.in-view { opacity: 1; transform: translateY(0); }
-    .stagger > * { transition-delay: calc(var(--i, 0) * 80ms); }
-    .hide-text { display: none !important; }
-
-    @keyframes pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(198,243,109,.55); } 50% { box-shadow: 0 0 0 6px rgba(198,243,109,0); } }
-    @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0; } }
-    @keyframes terminal-float { 0%,100% { transform: perspective(1000px) rotateY(-2deg) rotateX(1deg) translateY(0); } 50% { transform: perspective(1000px) rotateY(-1deg) rotateX(1deg) translateY(-7px); } }
-    @keyframes wire-flow { to { stroke-dashoffset: -200; } }
-    @media (max-width: 980px) {
-      .nav-links { gap: 13px; }
-      .availability { display: none; }
-      .hero { grid-template-columns: 1fr .82fr; gap: 34px; min-height: 680px; }
-      .lab-cases { grid-template-columns: repeat(2,1fr); }
-      .capability-grid { grid-template-columns: repeat(2,1fr); }
-    }
-    @media (max-width: 760px) {
-      :root { --nav-height: 64px; }
-      .nav-inner, .wrap { width: min(100% - 36px, var(--max)); }
-      .menu-toggle { display: inline-grid; place-items: center; }
-      .nav-links { display: none; position: absolute; top: calc(var(--nav-height) - 1px); left: 0; right: 0; padding: 15px 18px 20px; flex-direction: column; align-items: flex-start; gap: 15px; background: rgba(9,13,11,.97); border-bottom: 1px solid var(--line); }
-      .nav-links.open { display: flex; }
-      .hero { padding: 72px 0 65px; grid-template-columns: 1fr; gap: 35px; min-height: auto; }
-      .hero::after { top: 27px; }
-      .terminal { transform: none; animation: none; }
-      .quick-facts { grid-template-columns: repeat(2,1fr); }
-      .fact { min-height: 98px; padding: 19px; }
-      section.content-section { padding: 76px 0; }
-      .section-top { align-items: flex-start; flex-direction: column; margin-bottom: 30px; }
-      .side-note { text-align: left; max-width: none; }
-      .timeline { grid-template-columns: 1fr; }
-      .impact-grid { grid-template-columns: 1fr 1fr; }
-      .lab-intro-row { grid-template-columns: 1fr; gap: 16px; }
-      .lab-console { grid-template-columns: 1fr; }
-      .network-panel { border-right: 0; border-bottom: 1px solid var(--line); }
-      .node-detail { min-height: 0; }
-      .learning-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 480px) {
-      .brand-copy span { display: none; }
-      h1 { font-size: clamp(40px, 13vw, 57px); }
-      .hero-subtitle { font-size: 17px; }
-      .terminal-body { padding: 15px 13px 10px; font-size: 9px; }
-      .terminal-foot { font-size: 8px; }
-      .portrait-slot { margin: 0 12px 13px; }
-      .quick-facts { grid-template-columns: 1fr 1fr; }
-      .fact strong { font-size: 27px; }
-      .impact-grid, .capability-grid, .lab-cases { grid-template-columns: 1fr; }
-      .impact { padding: 18px; }
-      .network-panel { padding: 12px; }
-      .network-diagram { min-height: 245px; }
-      .contact-panel::after { font-size: 160px; bottom: -48px; }
-      footer { flex-direction: column; align-items: flex-start; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-      .reveal { opacity: 1; transform: none; }
-    }
-    @media print {
-      :root { color-scheme: light; --bg:#fff; --text:#111; --muted:#333; --muted-2:#555; --line:#bbb; --line-strong:#999; }
-      body { background: #fff !important; color: #111 !important; font-size: 10pt; }
-      body::before, .progress-track, .nav, .hero-actions, .mode-switch, .node-selectors, .back-top { display: none !important; }
-      .wrap { width: 100%; }
-      .hero { min-height: 0; padding: 25px 0; grid-template-columns: 1fr 1fr; }
-      .terminal, .job, .capability, .impact, .lab-case, .learning-card, .contact-panel { background: #fff !important; box-shadow: none !important; color: #111 !important; break-inside: avoid; }
-      .terminal { transform: none; animation: none; }
-      .terminal-body, .terminal-head, .terminal-foot { color: #111 !important; }
-      h1, h2, h3, .company, .term-value { color: #111 !important; }
-      .hero-copy, .section-intro, .job ul, .capability p, .impact p, .lab-case p, .learning-card li { color: #333 !important; }
-      section.content-section { padding: 28px 0; break-inside: auto; }
-      .timeline { grid-template-columns: 1fr 1fr; }
-      .job { min-height: 0; padding: 12px; }
-      .lab-console { grid-template-columns: 1fr 1fr; }
-      .network-diagram { min-height: 190px; }
-      .node-detail { min-height: 0; }
-      .contact-section { padding: 25px 0; }
-      footer { color: #555; }
-      .reveal { opacity: 1 !important; transform: none !important; }
-    }
-  </style>
+.project-row{display:grid;grid-template-columns:1fr 1fr;gap:11px;margin-top:13px}.project-card{background:white;border:1px solid var(--line);border-radius:7px;padding:15px 17px}.project-card .project-period{color:var(--teal);font:9px var(--mono)}.project-card h3{margin:6px 0 5px;font-size:12px;color:var(--navy)}.project-card p{font-size:10px;line-height:1.65;color:#63717a;margin:0}
+.education-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.education-card{padding:19px 20px;background:white;border:1px solid var(--line);border-radius:7px}.education-card h3{font-size:13px;color:var(--navy);margin:0 0 10px}.education-card ul{margin:0;padding-left:17px;color:#5b6972;font-size:11px;line-height:1.8}.education-card li{margin:4px 0}.language-level{margin-top:13px;padding-top:11px;border-top:1px solid var(--line);color:var(--teal);font:9px/1.7 var(--mono)}
+.contact-box{display:grid;grid-template-columns:1fr auto;align-items:center;gap:25px;background:var(--navy);border-radius:8px;padding:26px 29px;color:white}.contact-box h2{font-size:25px;line-height:1.2;margin:0 0 7px}.contact-box p{margin:0;color:#c1cdd3;font-size:11px;max-width:650px}.contact-links{display:flex;flex-direction:column;gap:8px;color:#e7eff1;font-size:10px;white-space:nowrap}.contact-links a:hover{color:#9fd1ca}footer{display:flex;justify-content:space-between;gap:15px;padding:24px 0 35px;color:#89969e;font:9px var(--mono)}.back-top{color:var(--teal)}
+.reveal{opacity:0;transform:translateY(12px);transition:opacity .55s ease,transform .55s ease}.reveal.visible{opacity:1;transform:none}.lang-en{display:none}body[data-lang="en"] .lang-es{display:none!important}body[data-lang="en"] .lang-en{display:initial}body[data-lang="es"] .lang-en{display:none!important}
+@media(max-width:950px){.nav-links{gap:10px}.nav-links a{font-size:10px}.hero{gap:36px}.skills-grid{grid-template-columns:repeat(2,1fr)}.section-note{display:none}}
+@media(max-width:760px){:root{--nav-h:62px}.nav-inner,.wrap{width:calc(100% - 34px)}.menu-toggle{display:inline-flex}.nav-links{display:none;position:absolute;left:0;right:0;top:var(--nav-h);padding:15px 18px 18px;background:white;border-bottom:1px solid var(--line);align-items:flex-start;flex-direction:column;gap:13px}.nav-links.open{display:flex}.download-nav{padding:8px 9px;font-size:9px}.hero{grid-template-columns:1fr;gap:22px;padding:55px 0 45px;min-height:auto}.hero-content{order:2}.portrait{order:1;justify-self:start;max-width:185px}.portrait img{aspect-ratio:4/5}.portrait-caption{text-align:left}.hero h1{font-size:clamp(36px,10vw,52px)}.quick-facts{grid-template-columns:repeat(2,1fr)}.fact:nth-child(2){border-right:0}.fact:nth-child(-n+2){border-bottom:1px solid var(--line)}section.content-section{padding:58px 0}.section-head{display:block;margin-bottom:23px}.career-list:before{left:9px}.career-item{grid-template-columns:1fr;gap:5px;padding-left:27px}.career-date{text-align:left;padding:0}.career-card:before{left:-24px;top:-19px}.career-card{padding:15px}.career-top{display:block}.industry{text-align:left;margin-top:5px}.achievement-strip{grid-template-columns:repeat(2,1fr)}.lab-wrap{padding:48px 0}.lab-flow{grid-template-columns:repeat(2,1fr);gap:18px 10px}.lab-flow:before{display:none}.lab-lower,.project-row,.education-grid{grid-template-columns:1fr}.contact-box{grid-template-columns:1fr;padding:22px}.contact-links{white-space:normal}}
+@media(max-width:460px){.identity-role{display:none}.nav-tools{gap:5px}.lang-switch button{padding:6px}.download-nav{font-size:0;gap:0;width:34px;height:34px;justify-content:center}.download-nav svg{width:15px;height:15px}.quick-facts{grid-template-columns:1fr 1fr}.fact{padding:15px}.fact strong{font-size:23px}.skills-grid{grid-template-columns:1fr}.achievement-strip{grid-template-columns:1fr 1fr}.career-card ul{font-size:10px}.figure-title{align-items:flex-start;flex-direction:column}.lab-figure{padding:15px}.flow-node p{font-size:8px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+@media print{body{background:white;color:#111}.site-nav,.progress,.hero-actions,.back-top{display:none!important}.wrap{width:100%}.hero{padding:20px 0;min-height:0}.portrait{max-width:150px}.quick-facts{break-inside:avoid}.reveal{opacity:1;transform:none}section.content-section{padding:25px 0;break-inside:auto}.career-card,.skill-card,.education-card,.project-card,.lab-figure,.contact-box{break-inside:avoid;box-shadow:none}.career-list:before{display:none}.career-item{break-inside:avoid}.lab-section{background:white}.lang-en{display:none!important}body[data-lang="en"] .lang-es{display:none!important}body[data-lang="en"] .lang-en{display:initial!important}}
+</style>
 </head>
-<body>
-  <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progressBar"></div></div>
-  <nav class="nav" aria-label="Navegación principal">
-    <div class="nav-inner">
-      <a class="brand" href="#top" aria-label="Diego Jacobs, inicio">
-        <span class="brand-mark">DJ.</span>
-        <span class="brand-copy"><strong>DIEGO JACOBS</strong><span>SECURITY / SYSTEMS / STRATEGY</span></span>
-      </a>
-      <div class="nav-links" id="navLinks">
-        <a href="#perfil">Perfil</a><a href="#trayectoria">Trayectoria</a><a href="#impacto">Resultados</a><a href="#capacidades">Expertise</a><a href="#lab">Homelab</a><a href="#formacion">Formación</a><a href="#contacto">Contacto</a>
-      </div>
-      <div class="nav-actions">
-        <span class="availability"><span class="dot"></span> OPEN TO OPPORTUNITIES</span>
-        <button class="menu-toggle" id="menuToggle" aria-label="Abrir navegación" aria-expanded="false"><svg viewBox="0 0 20 20" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h14M3 10h14M3 14h14"/></svg></button>
-      </div>
+<body data-lang="es">
+<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
+<nav class="site-nav" aria-label="Navegación principal">
+ <div class="nav-inner">
+  <a class="identity" href="#inicio" aria-label="Diego Jacobs - inicio"><span class="identity-mark">DJ</span><span><span class="identity-name">DIEGO JACOBS</span><span class="identity-role">Ciberseguridad · IT · Operaciones</span></span></a>
+  <div class="nav-links" id="navLinks">
+   <a href="#perfil"><span class="lang-es">Perfil</span><span class="lang-en">Profile</span></a>
+   <a href="#experiencia"><span class="lang-es">Experiencia</span><span class="lang-en">Experience</span></a>
+   <a href="#competencias"><span class="lang-es">Competencias</span><span class="lang-en">Skills</span></a>
+   <a href="#laboratorio"><span class="lang-es">Homelab</span><span class="lang-en">Personal lab</span></a>
+   <a href="#formacion"><span class="lang-es">Formación</span><span class="lang-en">Education</span></a>
+   <a href="#contacto"><span class="lang-es">Contacto</span><span class="lang-en">Contact</span></a>
+  </div>
+  <div class="nav-tools">
+   <div class="lang-switch" id="langSwitch" role="group" aria-label="Selector de idioma"><button type="button" data-lang="es" aria-pressed="true">ES</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div>
+   <a class="download-nav" id="navDownload" href="downloads/Diego_Jacobs_CV_Ejecutivo_ES.pdf" download>
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" width="14" height="14" aria-hidden="true"><path d="M10 2.5v10m0 0 3.7-3.7M10 12.5 6.3 8.8M3 14.5v2h14v-2"/></svg>
+    <span class="lang-es">CV PDF</span><span class="lang-en">CV PDF</span>
+   </a>
+   <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-label="Abrir menú"><svg viewBox="0 0 20 20" width="17" height="17" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M3 6h14M3 10h14M3 14h14"/></svg></button>
+  </div>
+ </div>
+</nav>
+<main id="inicio">
+<div class="wrap">
+<section class="hero" id="perfil">
+ <div class="hero-content">
+  <div class="eyebrow"><span class="lang-es">Perfil profesional</span><span class="lang-en">Professional profile</span></div>
+  <h1>Diego Jacobs</h1>
+  <div class="role-line"><span class="lang-es">Liderazgo en ciberseguridad | GRC, SOC y operaciones de IT</span><span class="lang-en">Cybersecurity leadership | GRC, SOC &amp; IT operations</span></div>
+  <p class="summary"><span class="lang-es">Profesional de IT y ciberseguridad con más de 25 años de experiencia en telecomunicaciones, medios, banca, retail y tecnología. Trayectoria en auditoría técnica, operaciones SOC y liderazgo regional de GRC y SOC. Experiencia en gestión de riesgos, controles, cumplimiento, IAM, SIEM, detección y respuesta a incidentes. Complemento esa trayectoria con práctica hands-on en infraestructura, redes, virtualización, almacenamiento, automatización e IA local.</span><span class="lang-en">IT and cybersecurity professional with 25+ years of experience across telecommunications, media, banking, retail and technology. Career spanning technical audit, SOC operations and regional GRC and SOC leadership. Background in risk management, security controls, compliance, IAM, SIEM, detection and incident response, complemented by hands-on practice in infrastructure, networking, virtualization, storage, automation and local AI.</span></p>
+  <div class="hero-contacts">
+   <a href="mailto:darijac@hotmail.com">darijac@hotmail.com</a><a href="tel:+541140520387">+54 11 4052-0387</a><a href="https://www.linkedin.com/in/dja2007/" target="_blank" rel="noopener noreferrer">linkedin.com/in/dja2007</a><span>Buenos Aires, Argentina</span>
+  </div>
+  <div class="hero-actions">
+   <a class="btn primary" id="heroDownload" href="downloads/Diego_Jacobs_CV_Ejecutivo_ES.pdf" download><span class="lang-es">Descargar CV ejecutivo (PDF)</span><span class="lang-en">Download executive CV (PDF)</span><svg viewBox="0 0 20 20" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 2.5v10m0 0 3.7-3.7M10 12.5 6.3 8.8M3 14.5v2h14v-2"/></svg></a>
+   <a class="btn" href="#experiencia"><span class="lang-es">Ver experiencia profesional</span><span class="lang-en">View professional experience</span></a>
+  </div>
+ </div>
+ <figure class="portrait"><img src="assets/diego-jacobs.jpg" alt="Diego Jacobs - fotografía profesional"><figcaption class="portrait-caption"><span class="lang-es">Ciberseguridad · Tecnología</span><span class="lang-en">Cybersecurity · Technology</span></figcaption></figure>
+</section>
+<div class="quick-facts" aria-label="Resumen profesional">
+ <div class="fact"><strong>25+</strong><span><span class="lang-es">Años en IT y ciberseguridad</span><span class="lang-en">Years in IT and cybersecurity</span></span></div>
+ <div class="fact"><strong>5.000+</strong><span><span class="lang-es">Endpoints con controles implementados</span><span class="lang-en">Endpoints covered by security control deployments</span></span></div>
+ <div class="fact"><strong>LATAM</strong><span><span class="lang-es">Alcance regional en GRC y SOC</span><span class="lang-en">Regional GRC and SOC responsibilities</span></span></div>
+ <div class="fact"><strong>~15</strong><span><span class="lang-es">Personas en equipos multidisciplinarios</span><span class="lang-en">People in multidisciplinary teams</span></span></div>
+</div>
+
+<section class="content-section" id="experiencia">
+ <div class="section-head reveal"><div class="section-head-main"><span class="section-kicker"><span class="lang-es">01 / Trayectoria profesional</span><span class="lang-en">01 / Professional experience</span></span><h2><span class="lang-es">Experiencia profesional</span><span class="lang-en">Professional experience</span></h2><p class="section-intro"><span class="lang-es">Responsabilidades y evolución profesional en organizaciones de telecomunicaciones, medios, banca, retail y tecnología. Los roles y alcances se presentan en orden cronológico inverso.</span><span class="lang-en">Professional responsibilities and career progression across telecommunications, media, banking, retail and technology organizations. Roles are listed in reverse chronological order.</span></p></div><div class="section-note"><span class="lang-es">GRC · SOC · IAM<br>Auditoría · Operaciones · IT</span><span class="lang-en">GRC · SOC · IAM<br>Audit · Operations · IT</span></div></div>
+ <div class="career-list">
+  <article class="career-item reveal"><div class="career-date">2023 — <span class="lang-es">Nov/2025</span><span class="lang-en">Nov/2025</span></div><div class="career-card"><div class="career-top"><div><h3><span class="lang-es">Gerente Regional de GRC — LATAM</span><span class="lang-en">Regional GRC Manager — LATAM</span></h3><div class="company">VRIO (DIRECTV LATAM)</div><span class="scope"><span class="lang-es">Equipo: 8 personas · internos y externos</span><span class="lang-en">Team: 8 people · internal and external</span></span></div><div class="industry"><span class="lang-es">Medios / Telecomunicaciones</span><span class="lang-en">Media / Telecommunications</span></div></div><ul><li><span class="lang-es">Liderazgo regional de GRC: gestión de riesgos de ciberseguridad, controles de seguridad, seguridad de terceros y requisitos regulatorios.</span><span class="lang-en">Regional GRC leadership covering cybersecurity risk, security controls, third-party security and regulatory requirements.</span></li><li><span class="lang-es">Gobierno del ciclo de vida de controles, RBAC, políticas, estándares, gestión de vulnerabilidades y preparación para auditorías.</span><span class="lang-en">Governance of the control lifecycle, RBAC, policies, standards, vulnerability management and audit readiness.</span></li><li><span class="lang-es">Coordinación de auditorías internas y externas, evaluaciones de cumplimiento y seguimiento de remediaciones.</span><span class="lang-en">Coordination of internal and external audits, compliance assessments and remediation tracking.</span></li><li><span class="lang-es">Incorporación de Microsoft Copilot para apoyar análisis, documentación y eficiencia de procesos de GRC.</span><span class="lang-en">Introduction of Microsoft Copilot to support analysis, documentation and efficiency in GRC processes.</span></li></ul></div></article>
+  <article class="career-item reveal"><div class="career-date">2020 — 2023</div><div class="career-card"><div class="career-top"><div><h3><span class="lang-es">Gerente Regional del Centro de Operaciones de Seguridad — LATAM</span><span class="lang-en">Regional Security Operations Center Manager — LATAM</span></h3><div class="company">VRIO (DIRECTV LATAM)</div><span class="scope"><span class="lang-es">Equipo: aproximadamente 15 personas · internos y externos</span><span class="lang-en">Team: approximately 15 people · internal and external</span></span></div><div class="industry"><span class="lang-es">Medios / Telecomunicaciones</span><span class="lang-en">Media / Telecommunications</span></div></div><ul><li><span class="lang-es">Dirección de operaciones SOC regionales: monitoreo, SIEM, correlación de eventos, detección y respuesta a incidentes.</span><span class="lang-en">Direction of regional SOC operations: monitoring, SIEM, event correlation, detection and incident response.</span></li><li><span class="lang-es">Responsabilidad sobre las operaciones de gestión de identidades y accesos (IAM).</span><span class="lang-en">Responsibility for identity and access management (IAM) operations.</span></li><li><span class="lang-es">Coordinación de gestión de vulnerabilidades, CSIRT, pruebas de seguridad y actividades de Blue Team / Red Team.</span><span class="lang-en">Coordination of vulnerability management, CSIRT, security testing and Blue Team / Red Team activities.</span></li><li><span class="lang-es">Desarrollo de procesos y controles para la protección y el gobierno de cuentas críticas y privilegiadas.</span><span class="lang-en">Development of processes and controls to protect and govern critical and privileged accounts.</span></li></ul></div></article>
+  <article class="career-item reveal"><div class="career-date">2016 — 2019</div><div class="career-card"><div class="career-top"><div><h3><span class="lang-es">Responsable del Centro de Operaciones de Seguridad</span><span class="lang-en">Security Operations Center Lead</span></h3><div class="company">ICBC (Industrial &amp; Commercial Bank of China)</div><span class="scope"><span class="lang-es">Equipo: 4 personas · internos y externos</span><span class="lang-en">Team: 4 people · internal and external</span></span></div><div class="industry"><span class="lang-es">Banca / Servicios financieros</span><span class="lang-en">Banking / Financial services</span></div></div><ul><li><span class="lang-es">Gestión del SOC, riesgos de seguridad, diseño de controles y respuesta a incidentes en un entorno bancario regulado.</span><span class="lang-en">Managed the SOC, security risks, control design and incident response in a regulated banking environment.</span></li><li><span class="lang-es">Monitoreo de seguridad, análisis de vulnerabilidades, proyectos, procedimientos y gobierno operativo.</span><span class="lang-en">Security monitoring, vulnerability analysis, projects, procedures and operational governance.</span></li><li><span class="lang-es">Coordinación con infraestructura, aplicaciones, identidad y riesgo; soporte de auditorías y remediaciones.</span><span class="lang-en">Coordination with infrastructure, applications, identity and risk teams; audit and remediation support.</span></li><li><span class="lang-es">Preparación para auditorías del Banco Central de la República Argentina (BCRA).</span><span class="lang-en">Preparation for audits by the Central Bank of Argentina (BCRA).</span></li></ul></div></article>
+  <article class="career-item reveal"><div class="career-date">2014 — 2016</div><div class="career-card"><div class="career-top"><div><h3><span class="lang-es">Analista Senior de Seguridad</span><span class="lang-en">Senior Security Analyst</span></h3><div class="company">Frávega</div></div><div class="industry"><span class="lang-es">Retail</span><span class="lang-en">Retail</span></div></div><ul><li><span class="lang-es">Gestión del ciclo de vida de controles de seguridad, herramientas, scripting, procedimientos operativos y reporting.</span><span class="lang-en">Security control lifecycle, tools, scripting, operating procedures and reporting.</span></li><li><span class="lang-es">Trabajo con SIEM, IAM, DLP, análisis de vulnerabilidades y procesos internos de seguridad.</span><span class="lang-en">Worked with SIEM, IAM, DLP, vulnerability analysis and internal security processes.</span></li><li><span class="lang-es">Evaluaciones de seguridad de proveedores, concientización, desarrollo de políticas y preparación para auditorías.</span><span class="lang-en">Supplier security assessments, awareness, policy development and audit preparation.</span></li></ul></div></article>
+  <article class="career-item reveal"><div class="career-date">2009 — 2013</div><div class="career-card"><div class="career-top"><div><h3><span class="lang-es">Especialista del Centro de Operaciones de Seguridad</span><span class="lang-en">Security Operations Center Specialist</span></h3><div class="company">Telecom Argentina</div><span class="scope"><span class="lang-es">Equipo: 3 personas</span><span class="lang-en">Team: 3 people</span></span></div><div class="industry"><span class="lang-es">Telecomunicaciones</span><span class="lang-en">Telecommunications</span></div></div><ul><li><span class="lang-es">Operación de controles SOC, correlación de eventos, infraestructura SIEM, análisis de incidentes, alertas y monitoreo.</span><span class="lang-en">SOC controls, event correlation, SIEM infrastructure, incident analysis, alert management and monitoring.</span></li><li><span class="lang-es">Implementación de controles y agentes de recolección en más de 5.000 endpoints y cientos de servidores productivos.</span><span class="lang-en">Deployment of security controls and collection agents across more than 5,000 endpoints and hundreds of production servers.</span></li><li><span class="lang-es">Implementación y gestión de infraestructura SIEM; participación en certificación SOX durante cuatro años consecutivos y certificación ISO 27001 del proceso SOC.</span><span class="lang-en">Implementation and operation of SIEM infrastructure; contribution to SOX certification for four consecutive years and ISO 27001 certification of the SOC process.</span></li></ul></div></article>
+  <article class="career-item reveal"><div class="career-date">2005 — 2008</div><div class="career-card"><div class="career-top"><div><h3><span class="lang-es">Analista Senior de Auditoría de Investigaciones Especiales</span><span class="lang-en">Senior Special Investigations Audit Analyst</span></h3><div class="company">Telecom Argentina</div></div><div class="industry"><span class="lang-es">Telecomunicaciones</span><span class="lang-en">Telecommunications</span></div></div><ul><li><span class="lang-es">Investigaciones especiales de IT, identificación de riesgos, análisis de datos, revisión de evidencias e informes de auditoría.</span><span class="lang-en">Special IT investigations, risk identification, data analysis, evidence review and audit reporting.</span></li><li><span class="lang-es">Diseño e implementación de un sistema de detección de conflictos de segregación de funciones (SoD) en SAP mediante procedimientos almacenados en Oracle.</span><span class="lang-en">Designed and implemented an SAP segregation-of-duties (SoD) conflict detection system using Oracle stored procedures.</span></li></ul></div></article>
+  <article class="career-item reveal"><div class="career-date">1998 — 2005</div><div class="career-card"><div class="career-top"><div><h3><span class="lang-es">Roles de IT, infraestructura y soporte técnico</span><span class="lang-en">IT, infrastructure and technical support roles</span></h3><div class="company">Telecom Argentina · Arnet · Páginas Amarillas · Novadata</div></div><div class="industry"><span class="lang-es">Tecnología / Telecomunicaciones</span><span class="lang-en">Technology / Telecommunications</span></div></div><ul><li><span class="lang-es">Proyectos y desarrollo web, provisionamiento de ISP, administración de redes y tecnologías de servidores.</span><span class="lang-en">Web projects and development, ISP provisioning, network administration and server technologies.</span></li><li><span class="lang-es">Infraestructura y operaciones técnicas en entornos empresariales.</span><span class="lang-en">Infrastructure and technical operations in enterprise environments.</span></li></ul></div></article>
+ </div>
+ <div class="achievement-strip reveal">
+  <div class="achievement"><strong>5.000+</strong><span><span class="lang-es">Endpoints y cientos de servidores alcanzados por despliegues de controles.</span><span class="lang-en">Endpoints and hundreds of servers covered by control deployments.</span></span></div>
+  <div class="achievement"><strong>SOX · 4 años</strong><span><span class="lang-es">Participación en cuatro ciclos consecutivos de certificación.</span><span class="lang-en">Contribution across four consecutive certification cycles.</span></span></div>
+  <div class="achievement"><strong>ISO 27001</strong><span><span class="lang-es">Certificación del proceso SOC.</span><span class="lang-en">Certification of the SOC process.</span></span></div>
+  <div class="achievement"><strong>SAP / Oracle</strong><span><span class="lang-es">Sistema de detección de conflictos SoD diseñado e implementado.</span><span class="lang-en">Designed and implemented SoD conflict detection system.</span></span></div>
+ </div>
+</section>
+
+<section class="content-section" id="competencias">
+ <div class="section-head reveal"><div class="section-head-main"><span class="section-kicker"><span class="lang-es">02 / Competencias</span><span class="lang-en">02 / Core competencies</span></span><h2><span class="lang-es">Áreas de experiencia y tecnologías</span><span class="lang-en">Areas of expertise and technologies</span></h2><p class="section-intro"><span class="lang-es">Conocimientos desarrollados en roles corporativos y experiencia práctica independiente. Las herramientas se agrupan por disciplina para facilitar su lectura.</span><span class="lang-en">Knowledge developed through corporate roles and independent hands-on practice. Tools are grouped by discipline for quick review.</span></p></div></div>
+ <div class="skills-grid">
+  <article class="skill-card reveal"><h3><span class="lang-es">Gobierno, riesgo y cumplimiento</span><span class="lang-en">Governance, risk and compliance</span></h3><p><span class="lang-es">Gestión de riesgos de ciberseguridad, ciclo de vida de controles, políticas, estándares, auditorías internas y externas, seguridad de terceros y cumplimiento regulatorio.</span><span class="lang-en">Cybersecurity risk management, security control lifecycle, policies, standards, internal and external audits, third-party security and regulatory compliance.</span></p><span class="platforms">GRC · ISO 27001 · SOX · PCI DSS · BCRA</span></article>
+  <article class="skill-card reveal"><h3><span class="lang-es">Operaciones SOC y detección</span><span class="lang-en">SOC operations and detection</span></h3><p><span class="lang-es">Monitoreo, SIEM, correlación de eventos, análisis de alertas, threat detection, respuesta a incidentes, CSIRT y gestión de vulnerabilidades.</span><span class="lang-en">Monitoring, SIEM, event correlation, alert analysis, threat detection, incident response, CSIRT and vulnerability management.</span></p><span class="platforms">ARCSIGHT · WAZUH · ELASTIC STACK · SENTINELONE</span></article>
+  <article class="skill-card reveal"><h3><span class="lang-es">Identidad y protección</span><span class="lang-en">Identity and protection</span></h3><p><span class="lang-es">Gestión de identidades y accesos, RBAC, gobierno de cuentas críticas y privilegiadas, segregación de funciones, EDR y DLP.</span><span class="lang-en">Identity and access management, RBAC, critical and privileged account governance, segregation of duties, EDR and DLP.</span></p><span class="platforms">IAM · RBAC · SoD · EDR · DLP</span></article>
+  <article class="skill-card reveal"><h3><span class="lang-es">Infraestructura y virtualización</span><span class="lang-en">Infrastructure and virtualization</span></h3><p><span class="lang-es">Administración de plataformas virtualizadas, VMs, contenedores, almacenamiento compartido, servicios y backups.</span><span class="lang-en">Administration of virtualized platforms, VMs, containers, shared storage, services and backups.</span></p><span class="platforms">PROXMOX · VMWARE / VSPHERE · LXC · DOCKER · QNAP · NFS · ISCSI</span></article>
+  <article class="skill-card reveal"><h3><span class="lang-es">Redes y observabilidad</span><span class="lang-en">Networking and observability</span></h3><p><span class="lang-es">Redes segmentadas, firewall, VPN, DNS, conectividad, integración de logs, métricas y monitoreo operativo.</span><span class="lang-en">Network segmentation, firewall, VPN, DNS, connectivity, log integration, metrics and operational monitoring.</span></p><span class="platforms">PFSENSE · UNIFI · OPENWRT · WIREGUARD · GRAFANA · SYSLOG · SNMP</span></article>
+  <article class="skill-card reveal"><h3><span class="lang-es">Automatización, IA e IoT</span><span class="lang-en">Automation, AI and IoT</span></h3><p><span class="lang-es">Linux, Bash, Docker Compose, APIs, modelos de lenguaje locales, agentes experimentales, automatizaciones residenciales y sensores.</span><span class="lang-en">Linux, Bash, Docker Compose, APIs, local language models, experimental agents, residential automation and sensors.</span></p><span class="platforms">OLLAMA · OPENCLAW · HOME ASSISTANT · ZIGBEE</span></article>
+ </div>
+</section>
+
+<section class="lab-section" id="laboratorio">
+ <div class="wrap lab-wrap">
+  <div class="lab-header reveal"><span class="section-kicker"><span class="lang-es">03 / Experiencia práctica independiente</span><span class="lang-en">03 / Independent hands-on experience</span></span><h2><span class="lang-es">Laboratorio tecnológico personal</span><span class="lang-en">Personal technology lab</span></h2><p><span class="lang-es">Entorno propio que diseño, administro y mantengo para practicar infraestructura, redes, virtualización, almacenamiento, servicios, observabilidad y automatización. Complementa la experiencia corporativa y demuestra trabajo técnico directo, sin presentarse como experiencia laboral empresarial.</span><span class="lang-en">A personal environment that I design, administer and maintain to practice infrastructure, networking, virtualization, storage, services, observability and automation. It complements my corporate background and demonstrates direct technical work without being presented as enterprise employment experience.</span></p></div>
+  <div class="lab-figure reveal">
+   <div class="figure-title"><span><span class="lang-es">Vista lógica simplificada del entorno</span><span class="lang-en">Simplified logical view of the environment</span></span><span><span class="lang-es">Arquitectura conceptual</span><span class="lang-en">Conceptual architecture</span></span></div>
+   <div class="lab-flow" aria-label="Homelab architecture diagram">
+    <div class="flow-node"><div class="flow-icon">01</div><h3><span class="lang-es">Red y perímetro</span><span class="lang-en">Network edge</span></h3><p><span class="lang-es">Conectividad, firewall, VPN y segmentación.</span><span class="lang-en">Connectivity, firewall, VPN and segmentation.</span></p><span class="flow-tech">pfSense · WireGuard · UniFi</span></div>
+    <div class="flow-node"><div class="flow-icon">02</div><h3><span class="lang-es">Cómputo y storage</span><span class="lang-en">Compute and storage</span></h3><p><span class="lang-es">Hosts virtualizados y almacenamiento en red.</span><span class="lang-en">Virtualized hosts and network storage.</span></p><span class="flow-tech">Proxmox · VMs · LXC · QNAP</span></div>
+    <div class="flow-node"><div class="flow-icon">03</div><h3><span class="lang-es">Servicios</span><span class="lang-en">Services</span></h3><p><span class="lang-es">Contenedores, servicios self-hosted y automatización.</span><span class="lang-en">Containers, self-hosted services and automation.</span></p><span class="flow-tech">Docker · Portainer · Linux</span></div>
+    <div class="flow-node"><div class="flow-icon">04</div><h3><span class="lang-es">Operación y aplicación</span><span class="lang-en">Operations and use cases</span></h3><p><span class="lang-es">Observabilidad, IA local y domótica.</span><span class="lang-en">Observability, local AI and home automation.</span></p><span class="flow-tech">Grafana · Ollama · Home Assistant</span></div>
+   </div>
+   <div class="lab-lower">
+    <div class="lab-explainer"><h3><span class="lang-es">Explorar las capas del entorno</span><span class="lang-en">Explore the environment layers</span></h3>
+     <div class="layer-tabs" role="group" aria-label="Lab layers"><button type="button" data-layer="network" aria-pressed="true"><span class="lang-es">Redes</span><span class="lang-en">Network</span></button><button type="button" data-layer="compute" aria-pressed="false"><span class="lang-es">Virtualización</span><span class="lang-en">Virtualization</span></button><button type="button" data-layer="services" aria-pressed="false"><span class="lang-es">Servicios</span><span class="lang-en">Services</span></button><button type="button" data-layer="applied" aria-pressed="false"><span class="lang-es">IA / IoT</span><span class="lang-en">AI / IoT</span></button></div>
+     <div class="layer-detail" id="layerDetail"><span class="lang-es"><strong>Redes:</strong> diseño y operación de firewall, segmentación, resolución DNS y acceso remoto mediante VPN. Integración de equipos y redes inalámbricas.</span><span class="lang-en"><strong>Networking:</strong> firewall design and operation, segmentation, DNS resolution and remote access through VPN. Integration of network and wireless equipment.</span></div>
     </div>
-  </nav>
+    <div class="lab-examples"><h3><span class="lang-es">Tareas técnicas que aborda el laboratorio</span><span class="lang-en">Hands-on activities in the lab</span></h3><ul><li><span class="lang-es">Desplegar y mantener máquinas virtuales, contenedores y servicios persistentes.</span><span class="lang-en">Deploy and maintain virtual machines, containers and persistent services.</span></li><li><span class="lang-es">Integrar almacenamiento iSCSI/NFS y recursos de backup.</span><span class="lang-en">Integrate iSCSI/NFS storage and backup resources.</span></li><li><span class="lang-es">Diagnosticar conectividad, servicios, logs y automatizaciones.</span><span class="lang-en">Troubleshoot connectivity, services, logs and automations.</span></li></ul></div>
+   </div>
+   <div class="lab-disclaimer"><span class="lang-es">Entorno personal · Topología ilustrativa · No se incluyen direcciones IP, nombres internos ni datos de acceso.</span><span class="lang-en">Personal environment · Illustrative topology · No IP addresses, internal hostnames or access details are disclosed.</span></div>
+  </div>
+  <div class="lab-method reveal">
+   <h3><span class="lang-es">Ciclo de trabajo técnico</span><span class="lang-en">Hands-on operational cycle</span></h3>
+   <div class="method-steps">
+    <div class="method-step"><b>01</b><strong><span class="lang-es">Diseñar</span><span class="lang-en">Design</span></strong><small><span class="lang-es">Arquitectura y capacidad</span><span class="lang-en">Architecture and capacity</span></small></div>
+    <div class="method-step"><b>02</b><strong><span class="lang-es">Desplegar</span><span class="lang-en">Deploy</span></strong><small><span class="lang-es">VMs, contenedores y servicios</span><span class="lang-en">VMs, containers and services</span></small></div>
+    <div class="method-step"><b>03</b><strong><span class="lang-es">Asegurar</span><span class="lang-en">Secure</span></strong><small><span class="lang-es">Firewall, VPN y backups</span><span class="lang-en">Firewall, VPN and backups</span></small></div>
+    <div class="method-step"><b>04</b><strong><span class="lang-es">Observar</span><span class="lang-en">Observe</span></strong><small><span class="lang-es">Logs, métricas y alertas</span><span class="lang-en">Logs, metrics and alerts</span></small></div>
+    <div class="method-step"><b>05</b><strong><span class="lang-es">Automatizar</span><span class="lang-en">Automate</span></strong><small><span class="lang-es">Scripts, APIs e IA local</span><span class="lang-en">Scripts, APIs and local AI</span></small></div>
+   </div>
+  </div>
+  <div class="project-row">
+   <article class="project-card reveal"><span class="project-period"><span class="lang-es">NOVIEMBRE 2025 — ACTUALIDAD</span><span class="lang-en">NOVEMBER 2025 — PRESENT</span></span><h3><span class="lang-es">Consultoría independiente en Seguridad e IT</span><span class="lang-en">Independent Security and IT Consulting</span></h3><p><span class="lang-es">Asesoramiento para proyectos privados, incluyendo diseño de redes y recomendaciones de seguridad perimetral y móvil.</span><span class="lang-en">Advisory work for private projects, including network design and perimeter and mobile security recommendations.</span></p></article>
+   <article class="project-card reveal"><span class="project-period"><span class="lang-es">NOVIEMBRE 2025 — ACTUALIDAD</span><span class="lang-en">NOVEMBER 2025 — PRESENT</span></span><h3><span class="lang-es">Proyecto de domótica y monitoreo residencial</span><span class="lang-en">Home Automation and Residential Monitoring Project</span></h3><p><span class="lang-es">Diseño de un sistema de monitoreo doméstico autoconfigurable, junto con experimentación y operación continua de hogares automatizados.</span><span class="lang-en">Design of a self-configurable home monitoring system, alongside ongoing experimentation and operation of automated homes.</span></p></article>
+  </div>
+ </div>
+</section>
 
-  <main id="top">
-    <div class="wrap">
-      <section class="hero" id="perfil">
-        <div class="hero-content">
-          <div class="hero-kicker"><span class="rule"></span><span class="eyebrow">CYBERSECURITY LEADERSHIP + HANDS-ON TECHNOLOGY</span></div>
-          <h1 id="heroTitle">Estrategia de seguridad.<br><span class="accent">Criterio técnico.</span><br>Experiencia real.</h1>
-          <p class="hero-subtitle" id="heroSubtitle">Liderazgo en ciberseguridad, con comprensión profunda de la operación y de la tecnología que la sostiene.</p>
-          <p class="hero-copy" id="heroCopy">Más de 25 años en IT y seguridad, liderando funciones de GRC y SOC en telecomunicaciones, medios y banca. Mi diferencial: conectar gobierno, riesgo y negocio con conocimiento práctico de infraestructura, redes, virtualización, automatización e IA local.</p>
-          <div class="hero-tags"><span class="tag">GRC / RISK / COMPLIANCE</span><span class="tag">SOC / IR / DETECTION</span><span class="tag">INFRA / NETWORKS / AI</span></div>
-          <div class="hero-actions">
-            <a class="btn primary" href="#trayectoria">Explorar experiencia <span aria-hidden="true">↘</span></a>
-            <a class="btn" href="#lab">Ver laboratorio técnico</a>
-            <button class="btn" id="printBtn" type="button"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7V3h10v4M5 14H3V8h14v6h-2M5 11h10v6H5z"/><path d="M14 9h1"/></svg> Imprimir / PDF</button>
-          </div>
-        </div>
-        <div class="terminal-wrap reveal">
-          <div class="terminal-glow"></div>
-          <div class="terminal">
-            <div class="terminal-head"><div class="terminal-id"><span class="mini-dot"></span> SECURITY_PROFILE / DJ-01</div><div class="terminal-meta">SESSION: VERIFIED</div></div>
-            <div class="terminal-body" aria-label="Resumen de perfil en formato consola">
-              <div class="term-line"><span class="prompt">$</span><span>profile.inspect --subject "Diego Jacobs"</span></div>
-              <div class="term-line"><span class="term-muted">[00.01]</span><span class="term-key">identity</span><span class="term-value">= security &amp; IT professional</span></div>
-              <div class="term-line"><span class="term-muted">[00.02]</span><span class="term-key">experience</span><span class="term-value">= 25+ years</span></div>
-              <div class="term-line"><span class="term-muted">[00.03]</span><span class="term-key">scope</span><span class="term-value">= LATAM / GRC / SOC / IAM</span></div>
-              <div class="term-line"><span class="term-muted">[00.04]</span><span class="term-key">operations</span><span class="term-value">= SIEM / IR / Detection / Controls</span></div>
-              <div class="term-line"><span class="term-muted">[00.05]</span><span class="term-key">hands_on</span><span class="term-value">= infra / network / automation / AI</span></div>
-              <div class="term-gap"></div>
-              <div class="term-line"><span class="term-ok">[OK]</span><span class="term-value">Leadership and technical depth detected.</span></div>
-              <div class="term-line"><span class="prompt">$</span><span class="term-muted">awaiting next challenge</span><span class="cursor"></span></div>
-            </div>
-            <div class="portrait-slot">
-              <div class="portrait-icon">DJ / ID</div>
-              <div><strong>FOTOGRAFÍA PROFESIONAL</strong><small>Espacio reservado para incorporar imagen de perfil</small></div>
-            </div>
-            <div class="terminal-foot"><span>BUENOS AIRES, ARGENTINA</span><span>PROFILE STATUS: ACTIVE</span></div>
-          </div>
-        </div>
-      </section>
+<section class="content-section" id="formacion">
+ <div class="section-head reveal"><div class="section-head-main"><span class="section-kicker"><span class="lang-es">04 / Formación</span><span class="lang-en">04 / Education and credentials</span></span><h2><span class="lang-es">Educación, certificaciones e idiomas</span><span class="lang-en">Education, certifications and languages</span></h2><p class="section-intro"><span class="lang-es">Formación académica en computación y electrónica, complementada por certificaciones técnicas y de seguridad.</span><span class="lang-en">Academic background in computing and electronics, complemented by technical and security certifications.</span></p></div></div>
+ <div class="education-grid">
+  <article class="education-card reveal"><h3><span class="lang-es">Educación</span><span class="lang-en">Education</span></h3><ul><li><strong>Universidad Argentina de la Empresa (UADE)</strong> — <span class="lang-es">Licenciatura en Ciencias de la Computación.</span><span class="lang-en">BSc-level studies in Computer Science.</span></li><li><strong>Instituto Industrial Luis A. Huergo</strong> — <span class="lang-es">Técnico Electrónico, orientación informática.</span><span class="lang-en">Electronics Technician, IT-oriented track.</span></li></ul></article>
+  <article class="education-card reveal"><h3><span class="lang-es">Certificaciones y formación profesional</span><span class="lang-en">Certifications and professional training</span></h3><ul><li><span class="lang-es">Auditor Líder BS7799-2 / ISO 27001 (2012).</span><span class="lang-en">Lead Auditor BS7799-2 / ISO 27001 (2012).</span></li><li>Microsoft Certified Professional (MCP).</li><li>Compaq ASE · Novell CNA · <span class="lang-es">Certificación Técnica Compaq.</span><span class="lang-en">Compaq Technical Certification.</span></li></ul><div class="language-level"><span class="lang-es">ESPAÑOL · NATIVO &nbsp; | &nbsp; INGLÉS · B2 / C1 TÉCNICO</span><span class="lang-en">SPANISH · NATIVE &nbsp; | &nbsp; ENGLISH · B2 / C1 TECHNICAL</span></div></article>
+ </div>
+</section>
 
-      <div class="quick-facts reveal" aria-label="Indicadores profesionales">
-        <div class="fact"><strong data-count="25" data-suffix="+">0</strong><span>AÑOS EN IT Y<br>CIBERSEGURIDAD</span></div>
-        <div class="fact"><strong data-count="5000" data-suffix="+">0</strong><span>ENDPOINTS CON<br>CONTROLES IMPLEMENTADOS</span></div>
-        <div class="fact"><strong data-count="15" data-suffix="+">0</strong><span>PERSONAS EN EQUIPOS<br>SOC REGIONALES</span></div>
-        <div class="fact"><strong>LATAM</strong><span>ALCANCE REGIONAL<br>GRC Y OPERACIONES SOC</span></div>
-      </div>
-
-      <section class="content-section" id="trayectoria">
-        <div class="section-top reveal">
-          <div class="section-title-wrap"><span class="section-code">02 / CAREER TIMELINE</span><h2>Una carrera construida<br>desde la operación hasta la estrategia.</h2><p class="section-intro">Experiencia en telecomunicaciones, medios, banca, retail y tecnología. Podés cambiar el foco para recorrer la trayectoria desde una perspectiva de liderazgo o desde la operación técnica.</p></div>
-          <div class="side-note">1998 — PRESENT<br>IT · SECURITY · OPERATIONS<br>ARGENTINA / LATAM</div>
-        </div>
-        <div class="mode-switch reveal" role="group" aria-label="Cambiar enfoque de lectura">
-          <button type="button" data-mode="leadership" aria-pressed="true">01 / LEADERSHIP</button>
-          <button type="button" data-mode="technical" aria-pressed="false">02 / SOC &amp; TECHNICAL</button>
-        </div>
-        <p class="mode-note" id="modeNote" aria-live="polite">FOCUS: dirección regional, gobierno, riesgo, equipos y resultados de negocio.</p>
-        <div class="timeline stagger">
-          <article class="job reveal" data-track="leadership">
-            <div class="job-head"><span class="period">2023 — ACTUALIDAD</span><span class="industry">MEDIOS / TELECOMUNICACIONES</span></div>
-            <h3>Gerente Regional de GRC — LATAM</h3><div class="company">VRIO (DIRECTV LATAM)</div><span class="scope">Equipo: 8 personas · internos y externos</span>
-            <ul><li>Liderazgo regional de GRC: riesgos de ciberseguridad, controles, seguridad de terceros y requisitos regulatorios.</li><li>Gobierno del ciclo de vida de controles, RBAC, políticas, estándares, vulnerabilidades y preparación para auditorías.</li><li>Coordinación de auditorías internas/externas, evaluaciones de cumplimiento y remediaciones.</li><li>Incorporación de Microsoft Copilot como apoyo a análisis, documentación y eficiencia de procesos.</li></ul>
-            <div class="role-tags"><span>GRC</span><span>RISK MANAGEMENT</span><span>COMPLIANCE</span><span>LATAM</span></div>
-          </article>
-          <article class="job reveal" data-track="leadership">
-            <div class="job-head"><span class="period">2020 — 2023</span><span class="industry">MEDIOS / TELECOMUNICACIONES</span></div>
-            <h3>Gerente Regional del Centro de Operaciones de Seguridad — LATAM</h3><div class="company">VRIO (DIRECTV LATAM)</div><span class="scope">Equipo: aprox. 15 personas · internos y externos</span>
-            <ul><li>Dirección de operaciones SOC regionales: monitoreo, SIEM, correlación de eventos, detección y respuesta a incidentes.</li><li>Responsabilidad sobre operaciones de gestión de identidades y accesos (IAM).</li><li>Coordinación de Vulnerability Management, CSIRT, pruebas de seguridad y actividades Blue Team / Red Team.</li><li>Procesos y controles para protección y gobierno de cuentas críticas y privilegiadas.</li></ul>
-            <div class="role-tags"><span>SOC LEADERSHIP</span><span>IAM</span><span>CSIRT</span><span>VULNERABILITY MGMT</span></div>
-          </article>
-          <article class="job reveal" data-track="leadership">
-            <div class="job-head"><span class="period">2016 — 2019</span><span class="industry">BANCA / SERVICIOS FINANCIEROS</span></div>
-            <h3>Responsable del Centro de Operaciones de Seguridad</h3><div class="company">ICBC (Industrial &amp; Commercial Bank of China)</div><span class="scope">Equipo: 4 personas · internos y externos</span>
-            <ul><li>Gestión del SOC, riesgos de seguridad, diseño de controles y respuesta a incidentes en entorno bancario regulado.</li><li>Coordinación con infraestructura, aplicaciones, identidad y riesgo; soporte de auditorías y remediaciones.</li><li>Monitoreo, análisis de vulnerabilidades, proyectos de seguridad y gobierno operativo.</li><li>Preparación para auditorías del Banco Central de la República Argentina (BCRA).</li></ul>
-            <div class="role-tags"><span>BANKING</span><span>SOC</span><span>SECURITY CONTROLS</span></div>
-          </article>
-          <article class="job reveal" data-track="technical">
-            <div class="job-head"><span class="period">2014 — 2016</span><span class="industry">RETAIL</span></div>
-            <h3>Analista Senior de Seguridad</h3><div class="company">Frávega</div>
-            <ul><li>Controles de seguridad, herramientas, scripting, procedimientos operativos y reporting.</li><li>Trabajo con SIEM, IAM, DLP, análisis de vulnerabilidades y procesos internos de seguridad.</li><li>Evaluaciones de seguridad de proveedores, concientización, políticas y preparación para auditorías.</li></ul>
-            <div class="role-tags"><span>SIEM</span><span>IAM</span><span>DLP</span><span>SCRIPTING</span></div>
-          </article>
-          <article class="job reveal" data-track="technical">
-            <div class="job-head"><span class="period">2009 — 2013</span><span class="industry">TELECOMUNICACIONES</span></div>
-            <h3>Especialista del Centro de Operaciones de Seguridad</h3><div class="company">Telecom Argentina</div><span class="scope">Equipo: 3 personas</span>
-            <ul><li>Operación y mejora de controles SOC, correlación de eventos, infraestructura SIEM, incidentes y monitoreo.</li><li>Implementación de controles y agentes de recolección en más de 5.000 endpoints y cientos de servidores productivos.</li><li>Implementación y gestión de infraestructura SIEM.</li><li>Participación en certificación SOX durante cuatro años consecutivos y certificación ISO 27001 del proceso SOC.</li></ul>
-            <div class="role-tags"><span>SIEM ENGINEERING</span><span>LOG COLLECTION</span><span>SOX</span><span>ISO 27001</span></div>
-          </article>
-          <article class="job reveal" data-track="technical">
-            <div class="job-head"><span class="period">2005 — 2008</span><span class="industry">TELECOMUNICACIONES</span></div>
-            <h3>Analista Senior de Auditoría de Investigaciones Especiales</h3><div class="company">Telecom Argentina</div>
-            <ul><li>Investigaciones especiales de IT, identificación de riesgos, análisis de datos, revisión de evidencias e informes.</li><li>Diseño e implementación de detección de conflictos de segregación de funciones (SoD) en SAP, mediante procedimientos almacenados en Oracle.</li></ul>
-            <div class="role-tags"><span>IT AUDIT</span><span>SAP</span><span>ORACLE</span><span>DATA ANALYSIS</span></div>
-          </article>
-          <article class="job reveal" data-track="technical">
-            <div class="job-head"><span class="period">1998 — 2005</span><span class="industry">IT / TELECOMUNICACIONES</span></div>
-            <h3>Roles de IT, Infraestructura y Soporte Técnico</h3><div class="company">Telecom Argentina · Arnet · Páginas Amarillas · Novadata</div>
-            <ul><li>Proyectos y desarrollo web, provisionamiento de ISP, administración de redes y tecnologías de servidores.</li><li>Infraestructura y operaciones técnicas en entornos empresariales.</li></ul>
-            <div class="role-tags"><span>NETWORKS</span><span>SERVERS</span><span>WEB</span><span>ISP</span></div>
-          </article>
-        </div>
-      </section>
-
-      <section class="content-section" id="impacto">
-        <div class="section-top reveal"><div class="section-title-wrap"><span class="section-code">03 / SELECTED IMPACT</span><h2>Resultados que conectan<br>personas, procesos y tecnología.</h2><p class="section-intro">Algunos hitos concretos de la trayectoria, expresados como alcance, implementación y resultados verificables.</p></div><div class="side-note">DEL DISEÑO DEL CONTROL<br>A SU OPERACIÓN REAL</div></div>
-        <div class="impact-grid stagger">
-          <article class="impact reveal"><div class="impact-number">5.000+</div><h3>Endpoints y servidores</h3><p>Implementación de controles de seguridad y agentes de recolección en más de 5.000 endpoints y cientos de servidores productivos.</p></article>
-          <article class="impact reveal"><div class="impact-number">4 años</div><h3>Certificación SOX</h3><p>Participación en el sostenimiento de la certificación SOX durante cuatro años consecutivos.</p></article>
-          <article class="impact reveal"><div class="impact-number">ISO 27001</div><h3>Proceso SOC</h3><p>Certificación ISO 27001 del proceso SOC, integrando operación, controles y evidencia.</p></article>
-          <article class="impact reveal"><div class="impact-number">SAP / SoD</div><h3>Detección de conflictos</h3><p>Diseño e implementación de un sistema para detectar conflictos de segregación de funciones en SAP mediante procedimientos almacenados en Oracle.</p></article>
-          <article class="impact reveal"><div class="impact-number">LATAM</div><h3>Liderazgo regional</h3><p>Responsabilidad sobre funciones regionales de GRC y operaciones SOC, articulando equipos internos y externos.</p></article>
-          <article class="impact reveal"><div class="impact-number">AI + GRC</div><h3>Innovación aplicada</h3><p>Incorporación de Microsoft Copilot en procesos de GRC para apoyar análisis, documentación y eficiencia de flujos de trabajo.</p></article>
-        </div>
-      </section>
-
-      <section class="content-section" id="capacidades">
-        <div class="section-top reveal"><div class="section-title-wrap"><span class="section-code">04 / EXPERTISE MAP</span><h2>Visión integral.<br>Profundidad en distintas capas.</h2><p class="section-intro">Las capacidades no se limitan a la gestión: combinan experiencia corporativa en seguridad con práctica técnica sostenida en infraestructura y automatización.</p></div><div class="side-note">GOVERNANCE ↔ OPERATIONS<br>INFRASTRUCTURE ↔ AUTOMATION</div></div>
-        <div class="capability-grid stagger">
-          <article class="capability reveal"><div class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3 4.5 6v5.5c0 5 3.2 8 7.5 9.5 4.3-1.5 7.5-4.5 7.5-9.5V6L12 3Z"/><path d="m8.5 12 2.3 2.3 4.8-5"/></svg></div><h3>GRC, Risk &amp; Compliance</h3><p>Gestión de riesgos, gobierno de controles, políticas, estándares, seguridad de terceros, auditorías y cumplimiento regulatorio.</p><span class="cap-label">ISO 27001 · SOX · PCI DSS · AUDIT</span></article>
-          <article class="capability reveal"><div class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 5h16v11H4zM8 20h8M12 16v4"/><path d="M7 9h3m-3 3h7m2-3h1"/></svg></div><h3>SOC &amp; Detection</h3><p>Operaciones SOC, SIEM, correlación de eventos, monitoreo, detección, análisis de alertas y respuesta a incidentes.</p><span class="cap-label">ARCSIGHT · WAZUH · ELASTIC · SIEM</span></article>
-          <article class="capability reveal"><div class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="3"/><path d="M5 20c.4-4 2.8-6 7-6s6.6 2 7 6M4 4l2 2m14-2-2 2"/></svg></div><h3>Identity &amp; Protection</h3><p>IAM, RBAC, gobierno de cuentas críticas y privilegiadas, segregación de funciones, EDR y DLP.</p><span class="cap-label">IAM · RBAC · EDR · DLP · SoD</span></article>
-          <article class="capability reveal"><div class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/><path d="M7 7h.01M7 17h.01M11 7h6m-6 10h6"/></svg></div><h3>Virtualization &amp; Storage</h3><p>Diseño y operación de plataformas virtualizadas, servicios en contenedores, almacenamiento compartido y backup.</p><span class="cap-label">PROXMOX · VMWARE · LXC · DOCKER · NAS</span></article>
-          <article class="capability reveal"><div class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4c2 2.2 3 4.9 3 8s-1 5.8-3 8c-2-2.2-3-4.9-3-8s1-5.8 3-8Z"/></svg></div><h3>Networks &amp; Observability</h3><p>Redes segmentadas, firewall, VPN, DNS, monitoreo, integración de logs, métricas y automatización operativa.</p><span class="cap-label">PFSENSE · UNIFI · WIREGUARD · SYSLOG</span></article>
-          <article class="capability reveal"><div class="cap-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v4m0 10v4M3 12h4m10 0h4M5.6 5.6l2.8 2.8m7.2 7.2 2.8 2.8m0-12.8-2.8 2.8m-7.2 7.2-2.8 2.8"/><circle cx="12" cy="12" r="4"/></svg></div><h3>Automation, AI &amp; IoT</h3><p>Linux, Bash, APIs, modelos LLM locales, agentes experimentales, automatización residencial y sensores IoT.</p><span class="cap-label">OLLAMA · OPENCLAW · HOME ASSISTANT</span></article>
-        </div>
-      </section>
-
-      <section class="content-section" id="lab">
-        <div class="lab-intro-row reveal">
-          <div><span class="section-code">05 / PERSONAL TECHNOLOGY LAB</span><h2>El laboratorio donde<br>la teoría se pone a prueba.</h2></div>
-          <div><p class="section-intro">Un entorno personal real, operado y evolucionado de forma continua. Virtualización, almacenamiento, redes segmentadas, servicios self-hosted, automatización e IA local. No es una lista de tecnologías: es infraestructura que diseño, administro, integro y mantengo.</p><div class="lab-stamp"><strong>HANDS-ON / SELF-HOSTED</strong>ARQUITECTURA CONCEPTUAL · SIN DATOS DE RED SENSIBLES</div></div>
-        </div>
-        <div class="lab-console reveal">
-          <div class="network-panel">
-            <div class="panel-head"><span>HOMELAB / LOGICAL ARCHITECTURE</span><span class="diagram-badge">SELECT NODE ↗</span></div>
-            <svg class="network-diagram" viewBox="0 0 620 340" role="img" aria-label="Diagrama lógico interactivo del homelab: firewall, virtualización, NAS, contenedores, inteligencia artificial local y domótica">
-              <defs><filter id="nodeGlow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
-              <path class="wire hot" d="M310 43 V83"/><path class="wire hot" d="M310 131 V170"/>
-              <path class="wire" d="M310 170 H145 V220"/><path class="wire" d="M310 170 H475 V220"/>
-              <path class="wire" d="M145 268 V296 H310 V315"/><path class="wire" d="M475 268 V296 H310"/>
-              <g class="svg-node" data-node="edge" tabindex="0" role="button" aria-label="Seleccionar perímetro y VPN">
-                <rect class="nodebox active" x="225" y="8" width="170" height="39" rx="6"/><circle class="node-dot" cx="242" cy="27" r="3"/><text x="254" y="25">EDGE / SECURITY</text><text class="subtext" x="254" y="37">pfSense · WireGuard</text>
-              </g>
-              <g class="svg-node" data-node="compute" tabindex="0" role="button" aria-label="Seleccionar virtualización">
-                <rect class="nodebox" x="225" y="83" width="170" height="48" rx="6"/><circle class="node-dot" cx="242" cy="105" r="3"/><text x="254" y="102">COMPUTE LAYER</text><text class="subtext" x="254" y="116">Proxmox · VMs · LXC</text>
-              </g>
-              <g class="svg-node" data-node="storage" tabindex="0" role="button" aria-label="Seleccionar almacenamiento">
-                <rect class="nodebox" x="62" y="220" width="166" height="48" rx="6"/><circle class="node-dot" cx="79" cy="242" r="3"/><text x="91" y="239">STORAGE</text><text class="subtext" x="91" y="253">QNAP · iSCSI · NFS</text>
-              </g>
-              <g class="svg-node" data-node="services" tabindex="0" role="button" aria-label="Seleccionar servicios y contenedores">
-                <rect class="nodebox" x="392" y="220" width="166" height="48" rx="6"/><circle class="node-dot" cx="409" cy="242" r="3"/><text x="421" y="239">SERVICES</text><text class="subtext" x="421" y="253">Docker · Portainer</text>
-              </g>
-              <g class="svg-node" data-node="ai" tabindex="0" role="button" aria-label="Seleccionar inteligencia artificial local">
-                <rect class="nodebox" x="62" y="296" width="166" height="38" rx="6"/><circle class="node-dot" cx="79" cy="315" r="3"/><text x="91" y="313">LOCAL AI</text><text class="subtext" x="91" y="325">Ollama · OpenClaw</text>
-              </g>
-              <g class="svg-node" data-node="iot" tabindex="0" role="button" aria-label="Seleccionar domótica e IoT">
-                <rect class="nodebox" x="392" y="296" width="166" height="38" rx="6"/><circle class="node-dot" cx="409" cy="315" r="3"/><text x="421" y="313">HOME / IoT</text><text class="subtext" x="421" y="325">Home Assistant · Zigbee</text>
-              </g>
-              <text x="310" y="66" text-anchor="middle" class="subtext">WAN / NETWORK EDGE</text>
-              <text x="310" y="154" text-anchor="middle" class="subtext">VIRTUALIZED ENVIRONMENT</text>
-            </svg>
-          </div>
-          <div class="node-detail" aria-live="polite">
-            <div><div class="node-index" id="nodeIndex">NODE 01 / 06 · SELECTED</div><h3 id="nodeTitle">Perímetro &amp; acceso remoto</h3><div class="node-stack" id="nodeStack">pfSense · WireGuard · DNS · Segmentación</div><p id="nodeDescription">Diseño y operación del borde de red, políticas de firewall, resolución DNS, segmentación de servicios y acceso remoto seguro mediante VPN.</p></div>
-            <div class="node-selectors" aria-label="Seleccionar componente del homelab">
-              <button type="button" data-node-select="edge" aria-pressed="true">EDGE</button><button type="button" data-node-select="compute" aria-pressed="false">COMPUTE</button><button type="button" data-node-select="storage" aria-pressed="false">STORAGE</button><button type="button" data-node-select="services" aria-pressed="false">SERVICES</button><button type="button" data-node-select="ai" aria-pressed="false">LOCAL AI</button><button type="button" data-node-select="iot" aria-pressed="false">IOT</button>
-            </div>
-          </div>
-        </div>
-        <div class="lab-cases stagger">
-          <article class="lab-case reveal"><span class="case-no">LAB / 01</span><h3>Virtualización y storage</h3><p>Proxmox con VMs y LXC; integración de almacenamiento QNAP mediante iSCSI y NFS, además de servicios y backups.</p></article>
-          <article class="lab-case reveal"><span class="case-no">LAB / 02</span><h3>Redes y seguridad</h3><p>Firewall, VPN WireGuard, segmentación, DNS, conectividad entre redes y administración de infraestructura UniFi / OpenWrt.</p></article>
-          <article class="lab-case reveal"><span class="case-no">LAB / 03</span><h3>Servicios y observabilidad</h3><p>Docker, Portainer, Compose, Linux/Bash, APIs, monitoreo, syslog y operación de servicios self-hosted.</p></article>
-          <article class="lab-case reveal"><span class="case-no">LAB / 04</span><h3>IA local y automatización</h3><p>Ollama, modelos LLM locales, OpenClaw, Home Assistant, Zigbee, sensores y automatizaciones residenciales.</p></article>
-        </div>
-        <p class="lab-footnote">PERSONAL LAB / EXPERIMENTACIÓN Y OPERACIÓN PROPIA · DIFERENCIADO DE LA EXPERIENCIA CORPORATIVA · LA TOPOLOGÍA ES ILUSTRATIVA Y OMITE DIRECCIONAMIENTO Y DETALLES SENSIBLES.</p>
-      </section>
-
-      <section class="content-section" id="formacion">
-        <div class="section-top reveal"><div class="section-title-wrap"><span class="section-code">06 / EDUCATION &amp; CREDENTIALS</span><h2>Formación técnica<br>y actualización profesional.</h2><p class="section-intro">Base académica en computación y electrónica, acompañada por formación en seguridad, infraestructura y auditoría.</p></div><div class="side-note">COMPUTING<br>ELECTRONICS<br>INFORMATION SECURITY</div></div>
-        <div class="learning-grid stagger">
-          <article class="learning-card reveal"><h3>Educación</h3><ul><li><strong>UADE</strong> — Licenciatura en Ciencias de la Computación.</li><li><strong>Instituto Industrial Luis A. Huergo</strong> — Técnico Electrónico, orientación informática.</li></ul></article>
-          <article class="learning-card reveal"><h3>Certificaciones y formación</h3><ul><li>Auditor Líder BS7799-2 / ISO 27001 (2012).</li><li>Microsoft Certified Professional (MCP).</li><li>Compaq ASE · Novell CNA · Certificación Técnica Compaq.</li></ul><div class="language-row"><span>ESPAÑOL / NATIVO</span><span>ENGLISH / B2–C1 TÉCNICO</span></div></article>
-        </div>
-      </section>
-
-      <section class="contact-section" id="contacto">
-        <div class="contact-panel reveal">
-          <span class="section-code">07 / CONTACT</span>
-          <h2>La próxima oportunidad puede necesitar esta combinación.</h2>
-          <p>Abierto a conversar sobre posiciones de liderazgo en ciberseguridad, GRC, gestión SOC, operaciones de seguridad y roles técnicos donde la experiencia práctica marque una diferencia.</p>
-          <div class="contact-links">
-            <a class="contact-item" href="mailto:darijac@hotmail.com"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2.5" y="4" width="15" height="12" rx="1.5"/><path d="m3 5 7 5 7-5"/></svg> darijac@hotmail.com</a>
-            <a class="contact-item" href="https://www.linkedin.com/in/dja2007/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.5 3a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3ZM3.3 7.5h2.4v9.2H3.3zm4 0h2.3v1.3h.1a2.5 2.5 0 0 1 2.3-1.4c2.5 0 3 1.6 3 3.7v5.6h-2.4v-5c0-1.2 0-2.2-1.4-2.2s-1.6 1-1.6 2.1v5.1H7.3z"/></svg> LINKEDIN / DJA2007</a>
-            <a class="contact-item" href="tel:+541140520387"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2.8h2.3l1 3.3-1.5 1.4a13 13 0 0 0 4.7 4.7l1.4-1.5 3.3 1v2.3c0 1-.8 1.8-1.8 1.8A12.6 12.6 0 0 1 4.2 4.6c0-1 .8-1.8 1.8-1.8Z"/></svg> +54 11 4052-0387</a>
-          </div>
-        </div>
-      </section>
-      <footer><span>© <span id="year">2026</span> DIEGO JACOBS · SECURITY / SYSTEMS / STRATEGY</span><a class="back-top" href="#top">BACK TO TOP ↑</a></footer>
-    </div>
-  </main>
-
-  <script>
-    (() => {
-      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const $ = (selector, root = document) => root.querySelector(selector);
-      const $$ = (selector, root = document) => Array.from(root.querySelectorAll(selector));
-
-      // Profile lens: changes the narrative emphasis without creating two disconnected CVs.
-      const modeCopy = {
-        leadership: {
-          title: 'Estrategia de seguridad.<br><span class="accent">Criterio técnico.</span><br>Experiencia real.',
-          subtitle: 'Liderazgo en ciberseguridad, con comprensión profunda de la operación y de la tecnología que la sostiene.',
-          copy: 'Más de 25 años en IT y seguridad, liderando funciones de GRC y SOC en telecomunicaciones, medios y banca. Mi diferencial: conectar gobierno, riesgo y negocio con conocimiento práctico de infraestructura, redes, virtualización, automatización e IA local.',
-          note: 'FOCUS: dirección regional, gobierno, riesgo, equipos y resultados de negocio.'
-        },
-        technical: {
-          title: 'Del evento de seguridad<br>al <span class="accent">sistema que lo genera.</span>',
-          subtitle: 'Operaciones SOC, detección y respuesta, con una base técnica que llega hasta la infraestructura.',
-          copy: 'Experiencia en SIEM, correlación, monitoreo, incidentes, controles y despliegues a escala. En paralelo, mantengo un laboratorio propio con Proxmox, redes segmentadas, Docker, almacenamiento NAS, observabilidad, automatización e IA local.',
-          note: 'FOCUS: SOC, SIEM, incident response, infraestructura, redes, automatización y troubleshooting.'
-        }
-      };
-      $$('[data-mode]').forEach(button => {
-        button.addEventListener('click', () => {
-          const mode = button.dataset.mode;
-          $$('[data-mode]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-          $('#heroTitle').innerHTML = modeCopy[mode].title;
-          $('#heroSubtitle').textContent = modeCopy[mode].subtitle;
-          $('#heroCopy').textContent = modeCopy[mode].copy;
-          $('#modeNote').textContent = modeCopy[mode].note;
-          $$('.job').forEach(job => {
-            const isLead = job.dataset.track === 'leadership';
-            job.style.opacity = mode === 'leadership' ? (isLead ? '1' : '.74') : (isLead ? '.78' : '1');
-          });
-        });
-      });
-
-      // Homelab graph: SVG nodes, buttons and text panel share one data source.
-      const nodes = {
-        edge: {title:'Perímetro & acceso remoto', stack:'pfSense · WireGuard · DNS · Segmentación', description:'Diseño y operación del borde de red, políticas de firewall, resolución DNS, segmentación de servicios y acceso remoto seguro mediante VPN.'},
-        compute: {title:'Virtualización', stack:'Proxmox · VMs · LXC · VMware / vSphere', description:'Administración de hosts, máquinas virtuales y contenedores Linux. Distribución de servicios, asignación de recursos y operación de entornos virtualizados.'},
-        storage: {title:'Almacenamiento', stack:'QNAP NAS · iSCSI · NFS · Backups', description:'Integración de almacenamiento de red para discos de VMs y volúmenes de contenedores, junto con recursos compartidos y estrategias de backup.'},
-        services: {title:'Servicios & contenedores', stack:'Docker · Portainer · Compose · Linux', description:'Despliegue y mantenimiento de servicios self-hosted, gestión de contenedores, redes de aplicaciones, volúmenes persistentes y automatización operativa.'},
-        ai: {title:'IA local & agentes', stack:'Ollama · LLM locales · OpenClaw', description:'Experimentación con inferencia local, modelos de lenguaje y agentes para automatización y asistencia en tareas técnicas, manteniendo el control de los datos y del entorno.'},
-        iot: {title:'Domótica & IoT', stack:'Home Assistant · Zigbee · Sensores', description:'Integración de dispositivos y sensores, automatizaciones locales, monitoreo residencial y diseño de soluciones que priorizan continuidad y operación local.'}
-      };
-      function selectNode(id) {
-        const data = nodes[id];
-        if (!data) return;
-        $$('.svg-node').forEach(node => {
-          const active = node.dataset.node === id;
-          $('.nodebox', node).classList.toggle('active', active);
-          node.setAttribute('aria-pressed', String(active));
-        });
-        $$('[data-node-select]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.nodeSelect === id)));
-        const index = Object.keys(nodes).indexOf(id) + 1;
-        $('#nodeIndex').textContent = `NODE 0${index} / 06 · SELECTED`;
-        $('#nodeTitle').textContent = data.title;
-        $('#nodeStack').textContent = data.stack;
-        $('#nodeDescription').textContent = data.description;
-      }
-      $$('.svg-node').forEach(node => {
-        node.addEventListener('click', () => selectNode(node.dataset.node));
-        node.addEventListener('keydown', event => {
-          if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectNode(node.dataset.node); }
-        });
-      });
-      $$('[data-node-select]').forEach(button => button.addEventListener('click', () => selectNode(button.dataset.nodeSelect)));
-
-      // Mobile navigation.
-      const menuToggle = $('#menuToggle');
-      menuToggle.addEventListener('click', () => {
-        const open = $('#navLinks').classList.toggle('open');
-        menuToggle.setAttribute('aria-expanded', String(open));
-        menuToggle.setAttribute('aria-label', open ? 'Cerrar navegación' : 'Abrir navegación');
-      });
-      $$('#navLinks a').forEach(link => link.addEventListener('click', () => {
-        $('#navLinks').classList.remove('open');
-        menuToggle.setAttribute('aria-expanded', 'false');
-      }));
-
-      // Scroll progress and active section state.
-      const progressBar = $('#progressBar');
-      let ticking = false;
-      function updateScroll() {
-        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-        const percent = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
-        progressBar.style.width = `${percent}%`;
-        ticking = false;
-      }
-      window.addEventListener('scroll', () => {
-        if (!ticking) { window.requestAnimationFrame(updateScroll); ticking = true; }
-      }, {passive:true});
-      updateScroll();
-
-      // Reveal elements on entry; render immediately when reduced motion is requested.
-      const revealItems = $$('.reveal');
-      if ('IntersectionObserver' in window && !reduceMotion) {
-        const revealObserver = new IntersectionObserver(entries => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) { entry.target.classList.add('in-view'); revealObserver.unobserve(entry.target); }
-          });
-        }, {threshold: .12, rootMargin: '0px 0px -30px 0px'});
-        revealItems.forEach(item => revealObserver.observe(item));
-      } else revealItems.forEach(item => item.classList.add('in-view'));
-
-      // Count-up for headline metrics.
-      const counters = $$('[data-count]');
-      function animateCounter(el) {
-        const target = Number(el.dataset.count);
-        const suffix = el.dataset.suffix || '';
-        if (reduceMotion) { el.textContent = target.toLocaleString('es-AR') + suffix; return; }
-        const start = performance.now();
-        const duration = target > 1000 ? 1250 : 850;
-        function frame(now) {
-          const t = Math.min(1, (now - start) / duration);
-          const eased = 1 - Math.pow(1 - t, 3);
-          el.textContent = Math.round(target * eased).toLocaleString('es-AR') + (t === 1 ? suffix : '');
-          if (t < 1) requestAnimationFrame(frame);
-        }
-        requestAnimationFrame(frame);
-      }
-      if ('IntersectionObserver' in window && !reduceMotion) {
-        const countObserver = new IntersectionObserver(entries => entries.forEach(entry => {
-          if (entry.isIntersecting) { animateCounter(entry.target); countObserver.unobserve(entry.target); }
-        }), {threshold:.6});
-        counters.forEach(item => countObserver.observe(item));
-      } else counters.forEach(animateCounter);
-
-      // Active navigation highlight.
-      if ('IntersectionObserver' in window) {
-        const sections = $$('main section[id]');
-        const navObserver = new IntersectionObserver(entries => entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            $$('.nav-links a').forEach(link => link.classList.toggle('active', link.getAttribute('href') === `#${entry.target.id}`));
-          }
-        }), {rootMargin:'-35% 0px -55% 0px'});
-        sections.forEach(section => navObserver.observe(section));
-      }
-
-      $('#printBtn').addEventListener('click', () => window.print());
-      $('#year').textContent = new Date().getFullYear();
-    })();
-  </script>
+<section class="content-section" id="contacto">
+ <div class="contact-box reveal"><div><span class="section-kicker" style="color:#9fd1ca"><span class="lang-es">Contacto profesional</span><span class="lang-en">Professional contact</span></span><h2><span class="lang-es">Diego Jacobs</span><span class="lang-en">Diego Jacobs</span></h2><p><span class="lang-es">Disponible para conversar sobre posiciones de liderazgo en ciberseguridad, GRC, gestión SOC, operaciones de seguridad y roles técnicos relacionados con infraestructura y seguridad.</span><span class="lang-en">Available to discuss cybersecurity leadership, GRC, SOC management, security operations and technical roles related to infrastructure and security.</span></p></div><div class="contact-links"><a href="mailto:darijac@hotmail.com">darijac@hotmail.com</a><a href="https://www.linkedin.com/in/dja2007/" target="_blank" rel="noopener noreferrer">linkedin.com/in/dja2007</a><a href="tel:+541140520387">+54 11 4052-0387</a></div></div>
+</section>
+<footer><span>© <span id="year">2026</span> DIEGO JACOBS · <span class="lang-es">PORTFOLIO PROFESIONAL</span><span class="lang-en">PROFESSIONAL PORTFOLIO</span></span><a class="back-top" href="#inicio"><span class="lang-es">VOLVER ARRIBA ↑</span><span class="lang-en">BACK TO TOP ↑</span></a></footer>
+</div>
+</main>
+<script>
+(() => {
+ const body=document.body, $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+ const menu=$('#menuToggle'), links=$('#navLinks');
+ let activeLayer='network';
+ const layerDescriptions={
+  network:{es:'<strong>Redes:</strong> diseño y operación de firewall, segmentación, resolución DNS y acceso remoto mediante VPN. Integración de equipos y redes inalámbricas.',en:'<strong>Networking:</strong> firewall design and operation, segmentation, DNS resolution and remote access through VPN. Integration of network and wireless equipment.'},
+  compute:{es:'<strong>Virtualización y almacenamiento:</strong> administración de Proxmox, VMs y LXC; integración de almacenamiento QNAP mediante iSCSI y NFS para discos, volúmenes y recursos compartidos.',en:'<strong>Virtualization and storage:</strong> administration of Proxmox, VMs and LXC; integration of QNAP storage using iSCSI and NFS for disks, volumes and shared resources.'},
+  services:{es:'<strong>Servicios y operación:</strong> despliegue de aplicaciones Docker, administración con Portainer y Compose, Linux/Bash, volúmenes persistentes, registros y monitoreo.',en:'<strong>Services and operations:</strong> deployment of Docker applications, administration with Portainer and Compose, Linux/Bash, persistent volumes, logs and monitoring.'},
+  applied:{es:'<strong>IA e IoT:</strong> ejecución de modelos LLM locales con Ollama, experimentación con agentes OpenClaw e integración de Home Assistant, Zigbee y sensores para automatizaciones residenciales.',en:'<strong>AI and IoT:</strong> local LLM inference with Ollama, experimentation with OpenClaw agents, and integration of Home Assistant, Zigbee and sensors for residential automations.'}
+ };
+ const renderLayer=()=>{const target=$('#layerDetail');if(target)target.innerHTML=layerDescriptions[activeLayer][body.dataset.lang]};
+ const setLanguage=(lang)=>{
+  if(!['es','en'].includes(lang)) return;
+  body.dataset.lang=lang; document.documentElement.lang=lang;
+  $('#langSwitch').setAttribute('aria-label',lang==='en'?'Language selector':'Selector de idioma');
+  menu.setAttribute('aria-label',lang==='en'?'Open menu':'Abrir menú');
+  $$('[data-lang]').filter(el=>el.tagName==='BUTTON').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.lang===lang)));
+  const pdf=lang==='en'?'downloads/Diego_Jacobs_Executive_CV_EN.pdf':'downloads/Diego_Jacobs_CV_Ejecutivo_ES.pdf';
+  $('#heroDownload').href=pdf; $('#navDownload').href=pdf; renderLayer();
+  document.title=lang==='en'?'Diego Jacobs | Cybersecurity, GRC, SOC & IT':'Diego Jacobs | Ciberseguridad, GRC, SOC e IT';
+  try{localStorage.setItem('dj-portfolio-language',lang)}catch(e){}
+ };
+ $$('button[data-lang]').forEach(b=>b.addEventListener('click',()=>setLanguage(b.dataset.lang)));
+ try{const saved=localStorage.getItem('dj-portfolio-language');if(saved)setLanguage(saved)}catch(e){}
+ menu.addEventListener('click',()=>{const open=links.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',body.dataset.lang==='en'?(open?'Close menu':'Open menu'):(open?'Cerrar menú':'Abrir menú'))});
+ $$('#navLinks a').forEach(a=>a.addEventListener('click',()=>{links.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
+ const progress=$('#progressBar');
+ const update=()=>{const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%'};
+ addEventListener('scroll',update,{passive:true});update();
+ const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if('IntersectionObserver'in window&&!reduce){const ob=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');ob.unobserve(e.target)}}),{threshold:.08,rootMargin:'0px 0px -20px 0px'});$$('.reveal').forEach(el=>ob.observe(el))}else $$('.reveal').forEach(el=>el.classList.add('visible'));
+ if('IntersectionObserver'in window){const sections=$$('main section[id]');const navOb=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)$$('.nav-links a').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-35% 0px -55% 0px'});sections.forEach(s=>navOb.observe(s))}
+ $$('[data-layer]').forEach(b=>b.addEventListener('click',()=>{activeLayer=b.dataset.layer;$$('[data-layer]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));renderLayer()}));
+ $('#year').textContent=new Date().getFullYear();
+})();
+</script>
 </body>
 </html>
